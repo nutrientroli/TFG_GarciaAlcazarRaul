@@ -19,14 +19,14 @@
     3.1. Xenobots
 4. Marco teórico --- OK 
     4.1. Inteligencia Artificial --- OK 
-        4.1.1. Computación Evolutiva
-            4.1.1.1. Contexto
-            4.1.1.2. Terminología
-                4.1.1.2.1. Generación
-                4.1.1.2.2. Genotipo y Fenotipo
-                4.1.1.2.3. Población
-                4.1.1.2.4. Evaluación y aptitud
-                4.1.1.2.5. Operadores
+        4.1.1. Computación Evolutiva --- OK
+            4.1.1.1. Contexto --- OK
+            4.1.1.2. Terminología --- OK
+                4.1.1.2.1. Generación --- OK
+                4.1.1.2.2. Genotipo y Fenotipo --- OK
+                4.1.1.2.3. Población --- OK
+                4.1.1.2.4. Evaluación y aptitud --- OK
+                4.1.1.2.5. Operadores --- OK
             4.1.1.3. Entrenamiento y Aprendizaje
             4.1.1.4. Aplicación
                 4.1.1.4.1. Algoritmo genético
@@ -151,6 +151,7 @@ El término de búsqueda utilizado en la anterior definición es entendido como 
 Toda aplicación de la EC presenta lo que se conoce como algoritmo evolutivo (en adelante EA) pero con ciertas variaciones. A continuación se representa un ciclo del EA general.
 
 ![EA](./assets/AlgoritmoEvolutivo.PNG)
+
 Algoritmo evolutivo.
 `Siddique, N. & Adeli, H. (2013) Computational Intelligence: Synergies of Fuzzy Logic, Neural Networks and Evolutionary Computing`
 
@@ -171,6 +172,7 @@ El genotipo describe la composición genética de un individuo y el fenotipo es 
 A continuación, se puede observar una tabla en la que se puede apreciar de manera visual estos dos términos.
 
 ![Genotipo+Fenotipo](./assets/Flors_de_Mendel.svg.png)
+
 Tabla de flores de Mendel.
 
 `Genotip. (s.f.). En Wikipedia. Recuperado el 17 de abril de 2021 de https://ca.wikipedia.org/wiki/Genotip`
