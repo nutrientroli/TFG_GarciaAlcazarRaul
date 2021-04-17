@@ -34,7 +34,7 @@
                 4.1.2.2. Terminología
                     4.1.2.2.1. Neurona y Perceptron
                     4.1.2.2.1. Función de activación
-                    4.1.2.2.2. Capa de Neuronas
+                    4.1.2.2.2. Capa
                 4.1.2.3. Entrenamiento y Aprendizaje
                 4.1.2.4. Aplicación
             4.1.3. Red Neuronal Evolutiva
@@ -52,7 +52,7 @@
                     4.2.1.2.2. Entity System o Entity Component System
             4.2.2. Unity3D
                 4.2.2.1. Contexto
-                4.2.2.2. Lenguaje c#
+                4.2.2.2. Lenguaje C#
                 4.2.2.3. Unity's Package Manager.
             4.2.3. Unity Data-Oriented Tech Stack (DOTS)
                 4.2.3.1. Contexto
@@ -69,5 +69,8 @@
     8. Bibliografía  
 ```
 
+## 4. Marco teórico.
+Este proyecto se centra en la implementación de conceptos de inteligencia artificial aplicando un paradigma de programación específico. Para entender el funcionamiento de dichos conceptos hay que disponer de nociones de inteligencia artificial y conceptos de desarrollo de software. 
 
+Por ello, el capítulo se ha dividido en dos grandes secciones de interés. La primera sección, la inteligencia artificial, concreta y expone los campos en los que se centra el proyecto. La segunda y última sección, entra en detalle sobre las tecnologías usadas, arquitectura de un ordenador y el tipo de programación usada en la implementación del proyecto.
 
