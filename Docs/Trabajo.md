@@ -55,15 +55,15 @@
             4.2.2.1. Contexto --- OK
             4.2.2.2. Lenguaje C# --- OK
             4.2.2.3. Versiones de Unity3D y Unity's Package Manager --- OK
-        4.2.3. Unity Data-Oriented Tech Stack (DOTS)
-            4.2.3.1. Contexto
-            4.2.3.2. ECS
-                4.2.3.2.1. Archetypes
-                4.2.3.2.2. ArchetypeChunk
-                4.2.3.2.3. Entity Queries
-            4.2.3.3. C# Job System   
-            4.2.3.4. Burst Compiler 
-            4.2.3.4. Otros paquetes
+        4.2.3. Unity Data-Oriented Tech Stack (DOTS) --- OK
+            4.2.3.1. Contexto --- OK
+            4.2.3.2. ECS --- OK
+                4.2.3.2.1. Archetypes --- OK
+                4.2.3.2.2. ArchetypeChunk --- OK
+                4.2.3.2.3. Entity Queries --- OK
+            4.2.3.3. C# Job System --- OK  
+            4.2.3.4. Burst Compiler --- OK 
+            4.2.3.4. Otros paquetes --- OK
 5. Diseño metodológico y cronograma
 6. Resultados del trabajo
 7. Conclusiones y reflexión
@@ -673,15 +673,119 @@ El funcionamiento del gestor de paquetes es el siguiente descrito en la figura s
 Es a través de este sistema de paquetes que Unity Technologies esta añadiendo una serie de librerías para integrar funcionalidad basada en la programación orientada a datos.
 
 #### 4.2.3. Unity Data-Oriented Tech Stack (DOTS).
-##### 4.2.3.1. Contexto.
-##### 4.2.3.2. ECS.
-###### 4.2.3.2.1. Archetypes.
-###### 4.2.3.2.2. ArchetypeChunk.
-###### 4.2.3.2.3. Entity Queries.
-##### 4.2.3.3. C# Job System.
-##### 4.2.3.4. Burst Compiler.
-##### 4.2.3.4. Otros paquetes.
+Este capítulo podría estar englobado dentro del punto anterior de Unity3D debido a que se detallan aspectos de un concepto que se encuentra dentro del marco de trabajo de la herramienta. 
 
+Se ha decidido que ocupe un peso de capítulo independiente debido a la importancia que tiene en la realización de la implementación del trabajo.
+
+A continuación se describe el concepto y se detallan los paquetes y funciones más importantes que engloba Unity Data-Oriented Tech Stack.
+
+##### 4.2.3.1. Contexto.
+Actualmente, el motor de juegos Unity3D esta siendo reconstruido utilizando un enfoque orientado a datos. A medida que se va desarrollando nueva funcionalidad para el motor, esta se libera para poder ser usada en el desarrollo de videojuegos. 
+
+Unity Data-Oriented Tech Stack (en adelante DOTS) es un conjunto de librerías y sistemas data-oriented design que se añaden al ecosistema del editor. Estos se pueden utilizar instalando los paquetes vía gestor de paquetes comentado anteriormente.
+
+Gracias a esta reconstrucción de Unity3D y el marketing detrás de dicho movimiento (el lema de Unity es Rendimiento por defecto), el paradigma Data-Oriented Design ha ganado interés en estos últimos años. 
+
+Además, en Unity3D se esta realizando un esfuerzo en demostrar que este paradigma proporciona beneficios para los videojuegos. Por ello, dispone en su web, varios casos de estudio de empresas que ya realizan juegos con la nueva tecnología. En uno de esos estudios, se presenta una tabla de mejora de rendimiento utilizando uno o varios paquetes del sistema DOTS. A continuación, en la siguiente figura, se observa como en el caso concreto del estudio de la empresa Far North Entertainment, DOTS puede mejorar el rendimiento del juego. El contador hace referencia a entidades u objetos del juego.
+
+![Cruce](./assets/DOTS1.PNG)
+
+`Hougaard K. (2019). Creating a third-person zombie shooter with DOTS. Unity Blog. Recuperado de  https://blogs.unity3d.com/es/2019/11/27/creating-a-third-person-zombie-shooter-with-dots/`
+
+A continuación se detalla cada uno de los paquetes que componen DOTS. Empezando con ECS, el componente más relevante a nivel de forma de programar y seguido por Job System y Burst Compiler, que añaden más capas de rendimiento. Finalmente, se detallan paquetes que se encargan de solucionar problemas concretos como las físicas, el audio, animaciones… La gran mayoría de paquetes se encuentran en estado preview. Por lo que pueden experimentar fallos y no se recomienda su uso en proyectos de larga duración o en productos comerciales.
+
+##### 4.2.3.2. ECS.
+Unity3D integra la arquitectura ECS mencionada en un capítulo anterior. A continuación se detalla información adicional sobre la implementación de ECS en el motor de Unity. 
+
+El paquete ECS es el paquete principal de DOTS y en el que se basan gran parte de los otros paquetes. Se trata de la definición de arquitectura de software en la que se implementan los demás paquetes de DOTS en general.
+
+Para poner en contexto la arquitectura ECS, se puede observar la siguiente figura. En ella se identifican tres entidades, cuatro tipos de componentes y un sistema. Básicamente, el sistema actualiza el componente LocalToWorld de las entidades que disponen de los componentes Translation, Rotation y LocalToWorld. Es importante ver que aunque una entidad disponga de más componentes (como es el caso de las entidades A y B), por defecto, éstas también se ven afectadas por el sistema si disponen de los componentes necesarios. Este comportamiento es parametrizable en la definición del sistema. Permitiendo poder excluir entidades si disponen de un componente concreto o como por defecto, no excluir.
+
+![Cruce](./assets/DOTS_ECS.PNG)
+
+`Unity Technologies. (2019). ECS concepts. Unity Manual. Recuperado de https://docs.unity3d.com/Packages/com.unity.entities@0.5/manual/ecs_core.html`
+
+Para realizar la gestión de entidades/componentes y sistemas, Unity3D utiliza un sistema de Arquetipos.
+
+###### 4.2.3.2.1. Archetypes.
+Un arquetipo es una combinación única de componentes (Unity Technologies, 2019). Los arquetipos permiten agrupar entidades que disponen de un mismo conjunto de componentes. Si se observa el ejemplo del diagrama anterior, la organización en arquetipos de dicho diagrama queda resuelto en la siguiente figura.
+
+`Unity Technologies. (2019). ECS concepts. Unity Manual. Recuperado de https://docs.unity3d.com/Packages/com.unity.entities@0.5/manual/ecs_core.html`
+
+![Cruce](./assets/DOTS_ECS2.PNG)
+
+`Unity Technologies. (2019). ECS concepts. Unity Manual. Recuperado de https://docs.unity3d.com/Packages/com.unity.entities@0.5/manual/ecs_core.html`
+
+###### 4.2.3.2.2. ArchetypeChunk.
+El arquetipo define donde se guarda en memoria los componentes de una entidad. Esta definición permite realizar una representación de la memoria gestionada por los arquetipos llamada ArchetypeChunk. Cada ArchetypeChunk guarda diferentes entidades de un mismo arquetipo y se crean o eliminan ArchetypeChunks en función de si están completos o si se vacían. 
+
+![Cruce](./assets/DOTS_ECS3.PNG)
+
+`Unity Technologies. (2019). ECS concepts. Unity Manual. Recuperado de https://docs.unity3d.com/Packages/com.unity.entities@0.5/manual/ecs_core.html`
+
+Cuando se crea una nueva entidad, esta se guarda en memoria (Chunk) en el primer espacio disponible que se encuentre des del primer ArchetypeChunk hasta el último. Por lo que no sigue un orden específico si se listaran todas las entidades. De hecho, cuando se elimina una entidad, esta es reemplazada por la última entidad que esta guardada en su mismo Chunk de memoria. Una vez reemplazada, se considera que el espacio donde estaba la última entidad esta disponible para nuevas entidades.
+
+###### 4.2.3.2.3. Entity Queries.
+Los sistemas realizan transformaciones de datos que en ECS se entienden como componentes. Para poder identificar que componentes y por lo tanto, que entidades hay que proporcionar a un sistema concreto, Unity3D utiliza el sistema Entity Query. Este sistema busca que arquetipos concuerdan con las especificaciones del Sistema y proporciona los archetypechunks al sistema (Unity Technology, 2019)
+
+`Unity Technologies. (2019). ECS concepts. Unity Manual. Recuperado de https://docs.unity3d.com/Packages/com.unity.entities@0.5/manual/ecs_core.html`
+
+La consulta a realizar puede disponer de diferentes requisitos:
+- All. Selecciona los arquetipos que contienen todos los componentes descritos por el sistema.
+- Any. Selecciona los arquetipos que contienen como mínimo un componente descrito por el sistema.
+- None. Selecciona los arquetipos que no contienen ningún componente definido por el sistema.
+
+##### 4.2.3.3. C# Job System.
+El paquete C# Job System no es realmente un paquete encapsulado dentro de DOTS. Esta muy relacionado en la implementación de dichas librerías orientadas a DOD y es por este motivo que Unity3D lo menciona en el conjunto de paquetes DOTS.
+
+C# Job System es una librería que permite escribir fácilmente código de ejecución multihilo integrado en el motor de videojuegos de Unity3D (Unity Technologies, 2020).
+
+`Unity Technologies. (2020). C# Job System. Unity Manual. Recuperado de https://docs.unity3d.com/2019.3/Documentation/Manual/JobSystem.html`
+
+Esta librería se integra muy bien con la librería ECS. Los sistemas se encuentran aislados y solo necesitan obtener unos datos de entrada, realizar la transformación de datos y finalizar con la expulsión de datos de salida. Dicho de otro modo, los sistemas pueden funcionar en diferentes hilos de ejecución y la manera en como esta escrito el código es muy adecuada a esta separación de hilos de ejecución.
+
+No solo se pueden ejecutar simultáneamente dos sistemas diferentes, sino que un mismo sistema puede ser ejecutado por varios hilos de ejecución a la vez. Para entender esta funcionalidad, a continuación se detalla ejemplo de ejecución ECS + C# Job System de un único sistema.
+
+![Cruce](./assets/DOTS_Job1.PNG)
+
+`Hougaard K. (2019). Creating a third-person zombie shooter with DOTS. Unity Blog. Recuperado de  https://blogs.unity3d.com/es/2019/11/27/creating-a-third-person-zombie-shooter-with-dots/`
+
+En la figura anterior, se observa como se ha realizado una Entity Query con un resultado de 16 ArchetypeChunks que coinciden con las especificaciones de un único Sistema. En el momento que hay que ejecutar este Sistema con los datos obtenidos por la consulta, es donde entra C# Job System. El Job System analiza el estado de las CPU y divide en múltiples hilos de ejecución la ejecución del Sistema proporcinandole unos datos u otros. 
+
+En este ejemplo, se entiende como dato de entrada en el sistema el trozo de memória que se tratará en el sistema. Permitiendo a las CPUs tratar los datos con la mayor eficacia posible a nivel de acceso de datos.
+
+Como resultado, se observa en la siguiente figura, como se mejora el rendimiento de tiempo de ejecución con la solución multihilo ofrecida por C# Job System. En vez de ejecutar un sistema con 16 Chunks de memoria, se realizan 4 con 4 Chunks de memoria cada uno.
+
+![Cruce](./assets/DOTS_Job2.PNG)
+
+`Hougaard K. (2019). Creating a third-person zombie shooter with DOTS. Unity Blog. Recuperado de  https://blogs.unity3d.com/es/2019/11/27/creating-a-third-person-zombie-shooter-with-dots/`
+
+##### 4.2.3.4. Burst Compiler.
+Burst Compiler es un paquete de Unity3D que permite compilar el código C# a código nativo optimizado para la plataforma esperada. Además, esta diseñado para trabajar en conjunto con C# Job System.
+
+El paquete se encuentra en una posición similar a C# Job System. No es un paquete que proporciona una implementación DOD directa pero que debido a su funcionamiento y a su integración con DOTS, Unity3D lo considera un paquete integrado en DOTS.
+
+Al compilar el código no solo realiza una transformación a código nativo, sino que realiza optimizaciones de dicho código. En el caso de DOD, una de las optimizaciones más destacadas es el uso del Single Instruction Multiple Data (SIMD).
+
+![Cruce](./assets/DOTS_Burst.PNG)
+
+`Hougaard K. (2019). Creating a third-person zombie shooter with DOTS. Unity Blog. Recuperado de  https://blogs.unity3d.com/es/2019/11/27/creating-a-third-person-zombie-shooter-with-dots/`
+
+Single Instruction Multiple Data es una técnica que permite operar de un mismo modo (una única instrucción de CPU) sobre un conjunto de datos uniformes obteniedo un conjunto de datos de resultado (Stokes, 2000). Esta técnica y la implementación ECS se adaptan entre ellas muy bien debido a que los sistemas de ECS operan sobre componetes que son uniformes. Por lo tanto, el uso del paquete Burst Compiler añade una optimización por defecto sin un gran cambio para el desarrollador.
+
+`Stokes, J. (2000) SIMD architectures. Recuperado de https://arstechnica.com/features/2000/03/simd/`
+
+##### 4.2.3.4. Otros paquetes.
+Además de los paquetes comentados anteriormente, el stack de DOTS ofrece paquetes enfocados a resolver problemáticas concretas. De entre estos paquetes, se pueden destacar:
+
+- Unity Physics. Resuelve la gestión de físicas en DOD.
+- Havok Physics. Basado en Unity Physics y añade funcionalidad.
+- DSGraph. Resuelve la gestión de audio en DOD.
+- DOTS Runtime. Resuelve el ciclo de ejecución en DOD.
+- Unity Netcode. Resuelve la gestión de recursos de red en DOD
+- Unity Animation. Resuelve la gestión de animaciones en DOD.
+
+El proyecto de DOTS aún esta en fase de desarrollo y es probable que con el tiempo se modifiquen, añadan o eliminen ciertos paquetes.
 
 
 
@@ -722,6 +826,8 @@ Homann, H. & Laenen, F. (2018). *SoAx: A generic C++ Structure of Arrays for han
 
 Hopfield, J.J. (1982) *Neural networks and physical systems with emergent collective computational abilities*, Pro- ceedings ofNational Academy ofSciences, 79, 2554–2558.
 
+Hougaard K. (2019). *Creating a third-person zombie shooter with DOTS*. Unity Blog. Recuperado de  https://blogs.unity3d.com/es/2019/11/27/creating-a-third-person-zombie-shooter-with-dots/
+
 Kaplan, A. Haenlein, M. (2019) *Siri, Siri, in my hand: Who’s the fairest in the land? On the interpretations, illustrations, and implications of artificial intelligence*.
 
 Liechty, D. (2015). *Object-Oriented/Data-Oriented Design of a Direct Simulation Monte Carlo Algorithm*. Journal of Spacecraft and Rockets.
@@ -758,7 +864,13 @@ Sharp, J. (1980). *Data oriented program design*. ACM SIGPLAN Notices.
 
 Siddique, N. & Adeli, H. (2013) *Computational Intelligence: Synergies of Fuzzy Logic, Neural Networks and Evolutionary Computing*.
 
+Stokes, J. (2000) *SIMD architectures*. Recuperado de https://arstechnica.com/features/2000/03/simd/
+
 Storn, R. (1995) *Constrained optimization*, Dr. Dobb’s Journal, May, pp. 119–123.
+
+Unity Technologies. (2019). *ECS concepts*. Unity Manual. Recuperado de https://docs.unity3d.com/Packages/com.unity.entities@0.5/manual/ecs_core.html
+
+Unity Technologies. (2020). *C# Job System*. Unity Manual. Recuperado de https://docs.unity3d.com/2019.3/Documentation/Manual/JobSystem.html
 
 Unity Technologies. (s. d.) *Unity’s Package Manager*. Unity Manual. Recuperado de https://docs.unity3d.com/Manual/Packages.html
 
