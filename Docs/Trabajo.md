@@ -42,14 +42,15 @@
             4.1.3.2. Terminología
             4.1.3.3. Entrenamiento y Aprendizaje
             4.1.3.4. Aplicación
-    4.2. ¿Implementación?
-        4.2.1. Data-Oriented Design 
-            4.2.1.1. Contexto
-                4.2.1.1. Arquitectura de un ordenador
-                4.2.1.2. Paradigma
-            4.2.1.2. Aplicación
-                4.2.1.2.1. Array of Structs y Struct of Arrays
-                4.2.1.2.2. Entity System o Entity Component System
+    4.2. Implementación --- OK
+        4.2.1. Data-Oriented Design --- OK
+            4.2.1.1. Contexto --- OK
+                4.2.1.1.1. Arquitectura de un ordenador
+                4.2.1.2.2. Historia --- OK
+            4.2.1.2. Aplicación --- OK
+                4.2.1.2.1. Array of Structs y Struct of Arrays --- OK
+                4.2.1.2.2. Entity System o Entity Component System --- OK
+            4.2.1.3. Características --- OK
         4.2.2. Unity3D
             4.2.2.1. Contexto
             4.2.2.2. Lenguaje C#
@@ -510,66 +511,210 @@ Existen diferentes técnicas para realizar cada uno de los aprendizajes menciona
 
 `Werbos, P.J. (1974) Beyond regression: new tools for prediction and analysis in the behavioural sciences, Doctoral Dissertation, Applied Mathematics, Harvard University.`
 
+### 4.2. Implementación
+La implementación que se realiza en este proyecto se basa en una série de tecnologías y patrones que caracterizan y diferencian este proyecto de otros que tratan las redes neuronales evolutivas.
+
+De hecho, este proyecto esta más enfocado a observar de que manera se puede aplicar la sección anterior de inteligencia artificial en una manera de programar concreta. Se trata del concepto Data-Oriented Desgin.
+
+A continuación se explica de que se trata dicho concepto a nivel teórico y se contextualiza en la herramienta utilizada (Unity3D) en el desarrollo.
+
+#### 4.2.1. Data-Oriented Design 
+El concepto de programación orientada a datos o Data-Oriented Design (en adelante DOD) se entendiende como una manera de programar que tiene el foco en los datos. El tipo de datos, cómo se guardan en memoria, cómo se leen y cómo se procesan durante la ejecución de un programa. Viene a resolver problemas derivados del cache miss y mejorar la velocidad de gestión de datos (Liechty, 2015). 
+
+`Liechty, D. (2015). Object-Oriented/Data-Oriented Design of a Direct Simulation Monte Carlo Algorithm. Journal of Spacecraft and Rockets.`
+
+Aunque para este paradigma los datos tienen gran relevancia, no hay que confundir el concepto de DOD con Data-Driven. La programación orientada a datos, se centra en la gestión de los datos y su relación con el hardware, mejorar o resolver problemas de rendimiento de acceso en memoria y/o utilizar patrones o estructuras específicas de datos entre otros. En cambio, el concepto Data-Driven a nivel general se puede entender como una estructura/sistema que proporciona a los datos mucha funcionalidad. Haciendo que los datos determinen el comportamiento de un programa (Llopis, 2009).
+
+`Llopis, N. (2009). Data-Oriented Design (Or Why You Might Be Shooting Yourself in The Foot With OOP). Recuperado de https://gamesfromwithin.com/data-oriented-design/comment-page-1`
+
+En resumen, el objetivo que busca el paradigma de programación orientada a datos es mejorar el rendimiento de los programas a través de la mejora en la gestión de datos en memoria.
+
+
+##### 4.2.1.1. Contexto
+Para entender mejor que significan los conceptos que componen el término DOD hay que diponer de nociones del funcionamiento de un ordenador y nociones de software. A continuación se exponen aquellos aspectos de la arquitectura de un ordenador necesarios para la comprensión del concepto y posteriormente, se detalla la historia este tipo de programación.
+
+###### 4.2.1.1.1. Arquitectura de un ordenador
+
+###### 4.2.1.2.2. Historia
+El concepto de programación orientada a datos o Data-Oriented Design (en adelante DOD) fue introducido por John Sharp (1980) con la intención de mejorar la eficiencia del software en arquitecturas multiprocesador.
+
+`Sharp, J. (1980). Data oriented program design. ACM SIGPLAN Notices.`
+
+“Thinking about data first and architecting the program based on that brings along lots of advantages” (Llopis, 2009). Aunque fue introducido por John Sharp (1980), no es hasta que Noel Llopis en un artículo define y nombra como un paradigma el concepto de programación orientada a datos. En dicho artículo se expone una comparativa entre DOD y la programación orientada a objetos (OOP), proporcionando un conjunto de guías y filosofías a seguir. Es en este artículo en el que se basa la gran mayoría de literatura actual sobre el tema.
+
+`Sharp, J. (1980). Data oriented program design. ACM SIGPLAN Notices.`
+
+`Llopis, N. (2009). Data-Oriented Design (Or Why You Might Be Shooting Yourself in The Foot With OOP). Recuperado de https://gamesfromwithin.com/data-oriented-design/comment-page-1`
+
+Todo trata sobre los datos. Todos los programas o aplicaciones producen y necesitan datos. Cualquier aplicación sin datos se queda en nada (Fabian, 2013, p.2). Cualquier tipo de programa requiere de acceso y control de datos. Por lo tanto, el concepto de DOD en teoría es aplicable a cualquier tipo de programa.
+
+`Fabian, R. (2013). Data-Oriented Design.`
+
+Se puede observar que hay un salto de casi 30 años des de que se nombró el concepto hasta que se ha recuperado. Esto se debe a la evolución que han experimentado el procesador y la memoria (detallados en el apartado anterior).
+
+![Cruce](./assets/DOD_processorGAP.PNG)
+
+`Hennessy, J. L., & Patterson, D. A. (2011). Computer architecture: a quantitative approach. Elsevier.`
+
+En la figura anterior se observa como el rendimiento de los procesadores (medido en diferencia de tiempo entre solicitud de memoria por núcleo de procesador) ha aumentado mucho más respecto al crecimiento de rendimiento que ha experimentado la memoria (medido en latencia de acceso a RAM) y es en este escenario en el que los desarrolladores implementan maneras de minimizar el impacto en rendimiento debido al acceso de datos en memoria.
+
+En este punto, hay que mencionar que existe una controversia en si la programación orientada a datos es un paradigma o no. Este hecho se debe a que de una manera u otra, los programadores ya utilizaban las herramientas o seguían la filosofía del DOD antes de que se nombrara por primera vez como paradigma de programación. Además, se trata de un paradigma que puede convivir con otros simultáneamente y puede quedar en segundo plano si no se realiza a conciencia.
+
+##### 4.2.1.2. Aplicación
+DOD no proporciona unas guías únicas y específicas a seguir que puedan funcionar en todos los casos (a diferencia del OOP que proporciona las clases y herencia). Esto se debe a que no es un paradigma de organización de código en sí, sino que se centra en la comunicación entre código y máquina para una mayor eficiencia en gestión de datos. Esto conlleva en algunos casos en una escritura de código menos legible para los humanos pero más “entendible” para el hardware. Aún así, si existen una serie de estrategias de implementación y conceptos utilizados que se definen en los siguientes capítulos. En este proyecto se enumeran las implementaciones más usadas o conocidas.
+
+###### 4.2.1.2.1. Array of Structs y Struct of Arrays
+El concepto de Array of Structs (en adelante AoS) se trata de una estrategia de implementación de organización de datos que consiste en disponer los datos encapsulados en una estructura y hacer una gestión de estas agrupaciones de datos a través de un vector.
+
+![Cruce](./assets/AoS.PNG)
+
+`Savas, N. (2017) Nomad Game Engine: Part 4.3 - AoS vs SoA. Recuperado de https://medium.com/@savas/nomad-game-engine-part-4-3-aos-vs-soa-storage-5bec879aa38c`
+
+Es un tipo de estructura de datos que se podría considerar común o usada en la programación orientada a objetos. Para acceder a los datos, solo hay que indicar un índice del vector y ya dispones del objeto a transformar. 
+
+Por otro lado, Struct of Arrays (en adelante SoA) consiste en disponer de una única estructura que dispone de varios vectores de datos. Si en AoS disponemos de una estructura con diferentes propiedades, en SoA, cada una de esas propiedades se convierte en un vector. De este modo, en esta implementación, no tenemos una única estructura que es un objeto, sino que el elemento en sí es unicamente el indice de dichos vectores.
+
+![Cruce](./assets/SoA.PNG)
+
+`Savas, N. (2017) Nomad Game Engine: Part 4.3 - AoS vs SoA. Recuperado de https://medium.com/@savas/nomad-game-engine-part-4-3-aos-vs-soa-storage-5bec879aa38c`
+
+Esta implementación (SoA) puede no ser tan corriente y rompe un poco con el modelo de programación orientada a objetos. En este caso, para acceder a los datos, hay que observar en cada vector indicando un índice.
+
+Las dos implementaciones influyen en el rendimiento del acceso a los datos y no hay una opción más valida que otra a nivel general. Todo depende del problema a resolver y los datos que hay que gestionar. Aún así, como se observa en el estudio de Holger Homann y Francois Laenen (2018) la implementación SoA es la opción que tiene un mayor impacto de rendimiento en el acceso a los datos.
+
+`Homann, H. & Laenen, F. (2018). SoAx: A generic C++ Structure of Arrays for handling particles in HPC codes. Computer Physics Communications.`
+
+Al realizar la implementación AoS, las estructuras se guardan contiguas entre ellas. Generando una representación de acceso a memoria como en la siguiente figura. En esta figura, se puede observar un ejemplo de distribución de acceso en memoria de los datos de un vector de 32 estructuras con 3 tipos de datos. Cada dato es representado por un color. La representación simula lineas de caché de 16 bytes y que cada dato ocupa 1 byte.
+
+![Cruce](./assets/AoS2.PNG)
+
+`Savas, N. (2017) Nomad Game Engine: Part 4.3 - AoS vs SoA. Recuperado de https://medium.com/@savas/nomad-game-engine-part-4-3-aos-vs-soa-storage-5bec879aa38c`
+
+La distribución de acceso en memoria de la implementación SoA es completamente diferente debido a su estructuración de propiedades como vectores. Se puede observar en la siguiente figura como es la representación de los mismos datos que en la figura anterior pero con el cambio de forma.
+
+![Cruce](./assets/SoA2.PNG)
+
+`Savas, N. (2017) Nomad Game Engine: Part 4.3 - AoS vs SoA. Recuperado de https://medium.com/@savas/nomad-game-engine-part-4-3-aos-vs-soa-storage-5bec879aa38c`
+
+Las representaciones anteriores permiten explicar mejor el motivo por el que el sistema SoA tiene mayor impacto en rendimiento. En Struct of Arrays, si se quiere acceder a la primera propiedad de todos los elementos, esta, es la única que se carga en caché y además de manera contigua. Solo aquello que se necesita se carga. De esta forma, caben más datos a utilizar en una línea de caché y por lo tanto, se producen menos “cache misses” evitando las penalizaciones de ejecución derivadas de estos. En el modelo Array of Structs, para acceder a un dato de una propiedad, se ha de cargar en caché toda la estructura. Dejando espacios de memoria caché con datos que no necesitas y por lo tanto, disponiendo de menos datos a acceder por línea de caché.
+
+Aunque parece que SoA tiene más rendimiento a nivel de acceso de datos, hay que recordar que no en todos los casos eso se traduce en mayor velocidad de acceso a datos. Todo depende del acceso que se quiera realizar y escoger que tipo de organización usar para resolver y mejorar el rendimiento de manera concreta para el problema a resolver.
+
+###### 4.2.1.2.2. Entity System o Entity Component System
+Los conceptos Entity System y Entity Component System (en adelante ECS) son el mismo concepto para el paradigma de Data-oriented Design. Básicamente, ECS es un término usado en el sector de videojuegos para referirse a Entity System. Este proyecto tiene puesto el foco en el sector de los videojuegos. Por lo tanto, en adelante, se utiliza la nomenclatura usada por dicho sector.
+
+ECS es un patrón de arquitectura de código que divide la lógica y las variables de manera particular. Divide el código en Entidades, Componentes y Sistemas. (Martin, 2007)
+
+`Martin, A. (2007). Entity Systems are the future of MMOG development - Part 2. Recuperado de http://t-machine.org/index.php/2007/11/11/entity-systems-are-the-future-of-mmog-development-part-2/`
+
+Esta estructuración es de interés en el paradigma de programación orientada a datos ya que abstrae los datos del comportamiento y crea estructuras de datos parecidas a la implementación SoA en términos de organización de datos en memoria.
+
+A continuación se detalla cada una de estas divisiones de código.
+
+- **Entidad**:
+Una entidad es un identificador global y único que sirve para identificar cualquier elemento del programa. No dispone de comportamiento ni lógica. Generalmente es únicamente un número. 
+Aunque únicamente es un número, a nivel conceptual es un término que también ayuda a identificar un conjunto de datos como único ente. Se podría entender las entidades como todo aquello que esta en nuestro programa. Por ejemplo, en un videojuego de tanques, un tanque sería una entidad.
+
+- **Componente**:
+Un componente es un conjunto de datos que proporcionan un sentido a la entidad. Por ejemplo, en un videojuego, un componente podría ser la posición, otro podría ser el control por IA o únicamente una etiqueta de referencia.
+Las entidades agrupan de uno a varios componentes y éstos pueden ser modificados durante el transcurso de la ejecución del programa. Por lo tanto, a una entidad se le puede añadir o eliminar uno o varios componentes, haciendo que su comportamiento pueda variar.
+La manera en que los datos pueden ser guardados en memoria depende el tipo de implementación. Principalmente se plantea un modelo similar a SoA donde componentes iguales son guardados en un mismo vector. Así, se puede sacar provecho del rendimiento que ofrece dicho patrón a nivel de caché.
+
+- **Sistema**:
+Un sistema es un actor global que se encarga de realizar las operaciones de todas las entidades según sus componentes. El sistema se ejecuta continuamente y puede ser asíncrono. 
+Dicho de otra manera, un conjunto de componentes entran en un sistema y dicho sistema realiza diversas transformaciones de los datos de los componentes. Haciendo que la entidad a la que pertenecen los componentes, realice un comportamiento u otro.
+
+Para entender como se interrelacionan las diferentes capas de esta arquitectura ECS, a continuación se muestra un ejemplo de implementación conceptual en contexto de videojuegos. 
+
+El ejemplo trata sobre un videojuego de tanques y solo se enfoca en el movimiento de un único objeto. El objeto a mover es un tanque. Conceptualmente, el tanque es la entidad en la implementación, aunque a nivel de datos, solo es un identificador. El tanque (entidad) dispone de una posición, una velocidad y una dirección entre otros aspectos. Estos aspectos en la implementación ECS equivalen a los componentes. Por lo tanto, se dispone del componente Posición, el componete Velocidad y el componente Dirección. En este punto, ya esta representado en memoria el tanque y los datos guardados en memoria no disponen de ninguna lógica o funcionalidad. Únicamente son datos que serán utilizados por los sistemas. Aquí entra el sistema encargado de hacer mover todas aquellas entidades que dispongan de los componentes Posición, Velocidad y Dirección. El sistema se va ejecutando y realizando transformaciones en el componete Posición según la Velocidad y la Dirección. En definitiva, se dispone de una función que se ejecuta un un hilo paralelo al hilo principal de ejecución que se encarga de cambiar la posición de todos los elementos con las propiedades necesarias para moverse.
+
+##### 4.2.1.3. Características
+Generalmente, la aplicación de DOD en un software ofrece una série de características que Noel Llopis identificó (2009). Hay que recordar que la programación orientada a datos no sigue un patrón único de implementación y en cada caso pueden variar ciertas características.
+
+`Llopis, N. (2009). Data-Oriented Design (Or Why You Might Be Shooting Yourself in The Foot With OOP). Recuperado de https://gamesfromwithin.com/data-oriented-design/comment-page-1`
+
+- Simplifica la paralelización. Mejora la ejecución multihilo debido a minimiza la sincronización entre los hilos de ejecución.
+- Aprovecha el uso de caché. Los datos se guardan de la manera más óptima para su gestión en caché.
+- Es modular. El código resulta en pequeñas funciones y pocas dependencias.
+- Facilidad de testeo. Al realizar un análisis de los datos en su implementación, se tienen en cuenta el dato de entrada y su transformación de manera localizada.
+- Integración con otros paradigmas. DOD se trata de un paradigma centrado en la gestión de acceso a datos que puede convivir con otros paradigmas. Por lo que se puede detectar un problema de rendimiento en una zona concreta del software y modificar únicamente ese espacio.
+
 ## 8. Bibliografía.
-Darwin, C. (1859) On the Origin of Species.
+Darwin, C. (1859) *On the Origin of Species*.
 
-DeJong, K. (1975). An Analysis of the Behavior of a Class of Genetic Adaptive Systems. PhD Dissertation, Department of Computer and Communication Sciences, University of Michigan, Ann Arbor.
+DeJong, K. (1975). *An Analysis of the Behavior of a Class of Genetic Adaptive Systems*. PhD Dissertation, Department of Computer and Communication Sciences, University of Michigan, Ann Arbor.
 
-Della, A. De Stefano, C. Marcelli, A. (2004) On the role of population size and niche radius in fitness sharing.
+Della, A. De Stefano, C. Marcelli, A. (2004) *On the role of population size and niche radius in fitness sharing*.
 
-Federico, L. (2005) Entrenamiento de redes neuronales basado en algoritmos evolutivos.
+Fabian, R. (2013). *Data-Oriented Design*.
 
-Fogel, L.J. (1962) Autonomous automata, Industrial Research, 4, 14–19.
+Federico, L. (2005) *Entrenamiento de redes neuronales basado en algoritmos evolutivos*.
 
-Friedberg, R.M. (1958) A learning machine: Part I, IBM Journal ofResearch and Development, 2(1), 2–13.
+Fogel, L.J. (1962) *Autonomous automata*, Industrial Research, 4, 14–19.
 
-Gardner, H. (1983) Multiple intelligences.
+Friedberg, R.M. (1958) *A learning machine: Part I*, IBM Journal ofResearch and Development, 2(1), 2–13.
 
-Genotip. (s.f.). En Wikipedia. Recuperado el 17 de abril de 2021 de https://ca.wikipedia.org/wiki/Genotip
+Gardner, H. (1983) *Multiple intelligences*.
 
-Gregor, M. (1866). Versuche über Plflanzen-hybriden. Verhandlungen des naturforschenden Ver-eines in Brünn, Bd. IV für das Jahr 1865, Abhand-lungen, 3–47.
+Genotip. (s.f.). *En Wikipedia*. Recuperado el 17 de abril de 2021 de https://ca.wikipedia.org/wiki/Genotip
 
-Goldberg, D. (1989). Genetic Algorithms in Search, Optimization& Machine Learning.
+Gregor, M. (1866). *Versuche über Plflanzen-hybriden. Verhandlungen des naturforschenden Ver-eines in Brünn*, Bd. IV für das Jahr 1865, Abhand-lungen, 3–47.
 
-Haugeland, J. (1989) Artificial intelligence: The very idea.
+Goldberg, D. (1989). *Genetic Algorithms in Search, Optimization& Machine Learning*.
 
-Hebb, D.O. (1949) The Organization ofBehavior: A Neuropsychological Theory, John Wiley, New York.
+Haugeland, J. (1989) *Artificial intelligence: The very idea*.
 
-Hidalgo, J. Turrado, J. (2011) Algoritmos genéticos: Aplicación al problema de la mochila.
+Hebb, D.O. (1949) *The Organization ofBehavior: A Neuropsychological Theory*, John Wiley, New York.
 
-Holland, J. (1975). Adaptation In Natural and Artificial Systems. University of Michigan Press, Ann Arbor.
+Hennessy, J. L., & Patterson, D. A. (2011). *Computer architecture: a quantitative approach*. Elsevier.
 
-Hopfield, J.J. (1982) Neural networks and physical systems with emergent collective computational abilities, Pro- ceedings ofNational Academy ofSciences, 79, 2554–2558.
+Hidalgo, J. Turrado, J. (2011) *Algoritmos genéticos: Aplicación al problema de la mochila*.
 
-Kaplan, A. Haenlein, M. (2019) Siri, Siri, in my hand: Who’s the fairest in the land? On the interpretations, illustrations, and implications of artificial intelligence.
+Holland, J. (1975). *Adaptation In Natural and Artificial Systems*. University of Michigan Press, Ann Arbor.
 
-Minsky, M. and Papert, S. (1969) Perceptrons, MIT Press, Cambridge, MA.
+Homann, H. & Laenen, F. (2018). *SoAx: A generic C++ Structure of Arrays for handling particles in HPC codes*. Computer Physics Communications.
 
-McCulloch, W.S. and Pitts, W.H. (1943) A logical calculus of the ideas imminent in nervous activity, Bulletin of Mathematical Biophysics, 5, 115–133.
+Hopfield, J.J. (1982) *Neural networks and physical systems with emergent collective computational abilities*, Pro- ceedings ofNational Academy ofSciences, 79, 2554–2558.
 
-Nacelle, A. (2009) Redes neuronales artificiales.
+Kaplan, A. Haenlein, M. (2019) *Siri, Siri, in my hand: Who’s the fairest in the land? On the interpretations, illustrations, and implications of artificial intelligence*.
 
-Piaget, J. (1963) The Origins of Intelligence in Children.
+Liechty, D. (2015). *Object-Oriented/Data-Oriented Design of a Direct Simulation Monte Carlo Algorithm*. Journal of Spacecraft and Rockets.
 
-Poole, D. Mackworth, A. Goebel, R. (1998) Computational Intelligence: A Logical Approach.
+Llopis, N. (2009). *Data-Oriented Design (Or Why You Might Be Shooting Yourself in The Foot With OOP)*. Recuperado de https://gamesfromwithin.com/data-oriented-design/comment-page-1
 
-Real Academia Española. (2020). Diccionario de la lengua española (23.4 ed.). Consultado en https://www.rae.es
+Martin, A. (2007). *Entity Systems are the future of MMOG development - Part 2*. Recuperado de http://t-machine.org/index.php/2007/11/11/entity-systems-are-the-future-of-mmog-development-part-2/
 
-Rechenberg, I. (1965) Cybernetic Solution Path ofan Experimental Problem, Royal Aircraft Establishment, Library Translation No. 1122, Farnborough, UK.
+Minsky, M. and Papert, S. (1969) *Perceptrons*, MIT Press, Cambridge, MA.
 
-Reynolds, R.G. (1994) Introduction to cultural algorithms. In Proceedings of the Third Annual Conference on Evolutionary Programming, A.V. Sebald and L.J. Fogel (eds), World Scientific, Singapore, pp. 131–139.
+McCulloch, W.S. and Pitts, W.H. (1943) *A logical calculus of the ideas imminent in nervous activity*, Bulletin of Mathematical Biophysics, 5, 115–133.
 
-Rosenblatt, F. (1958) The perceptron: a probabilistic model for information storage and organisation in the brain, Psychology Review, 65, 386–408.
+Nacelle, A. (2009) *Redes neuronales artificiales*.
 
-Salman, A. (2009) An Open Domain-Extensible Environment for Simulation-Based Scientific Investigation (ODESSI).
+Piaget, J. (1963) *The Origins of Intelligence in Children*.
 
-Siddique, N. & Adeli, H. (2013) Computational Intelligence: Synergies of Fuzzy Logic, Neural Networks and Evolutionary Computing.
+Poole, D. Mackworth, A. Goebel, R. (1998) *Computational Intelligence: A Logical Approach*.
 
-Storn, R. (1995) Constrained optimization, Dr. Dobb’s Journal, May, pp. 119–123.
+Real Academia Española. (2020). *Diccionario de la lengua española (23.4 ed.)*. Consultado en https://www.rae.es
 
-Werbos, P.J. (1974) Beyond regression: new tools for prediction and analysis in the behavioural sciences, Doctoral Dissertation, Applied Mathematics, Harvard University.
+Rechenberg, I. (1965) *Cybernetic Solution Path ofan Experimental Problem*, Royal Aircraft Establishment, Library Translation No. 1122, Farnborough, UK.
 
-Whitley, D. (1994). A genetic algorithm tutorial. Statistics and computing.
+Reynolds, R.G. (1994) *Introduction to cultural algorithms.* In Proceedings of the Third Annual Conference on Evolutionary Programming, A.V. Sebald and L.J. Fogel (eds), World Scientific, Singapore, pp. 131–139.
 
-Yao, X. (1990) Evolving artificial neural networks.
+Rosenblatt, F. (1958) *The perceptron: a probabilistic model for information storage and organisation in the brain*, Psychology Review, 65, 386–408.
+
+Salman, A. (2009) *An Open Domain-Extensible Environment for Simulation-Based Scientific Investigation (ODESSI)*.
+
+Savas, N. (2017) *Nomad Game Engine: Part 4.3 - AoS vs SoA*. Recuperado de https://medium.com/@savas/nomad-game-engine-part-4-3-aos-vs-soa-storage-5bec879aa38c
+
+Sharp, J. (1980). *Data oriented program design*. ACM SIGPLAN Notices.
+
+Siddique, N. & Adeli, H. (2013) *Computational Intelligence: Synergies of Fuzzy Logic, Neural Networks and Evolutionary Computing*.
+
+Storn, R. (1995) *Constrained optimization*, Dr. Dobb’s Journal, May, pp. 119–123.
+
+Werbos, P.J. (1974) *Beyond regression: new tools for prediction and analysis in the behavioural sciences*, Doctoral Dissertation, Applied Mathematics, Harvard University.
+
+Whitley, D. (1994). *A genetic algorithm tutorial. Statistics and computing*.
+
+Yao, X. (1990) *Evolving artificial neural networks*.
 
