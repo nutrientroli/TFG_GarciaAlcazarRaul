@@ -284,8 +284,62 @@ Existen diferentes formas de realizar cambios en los genes. Aplicar cambios de o
 Una vez aplicado el operador de mutación, ya se dispone de una nueva generación de individuos diferentes a la anterior generación y es en este momento en el que se inicia de nuevo el ciclo de evaluación y aplicación de operadores sobre la población.
 
 ##### 4.1.1.3. Entrenamiento y Aprendizaje.
+Como se ha mencionado, los fenotipos son las potenciales soluciones de un problema concreto y las generaciones, son cada una de las iteraciones que evalúa unos nuevos fenotipos.
+
+Con estos dos conceptos, se puede observar que el sistema en cada generación selecciona (mediante el operador de selección) las soluciones más óptimas respecto los demás fenotipos de su generación. Los fenotipos seleccionados sirven como base genética para crear la población de la siguiente generación (mediante operadoes de cruce y mutación).
+
+Por lo tanto, en cada generación se encontrará generalmente una solución igual o más óptima que la generación anterior. Solo es cuestión de repetir el proceso hasta encontrar una solucción deseada.
+
 ##### 4.1.1.4. Aplicación.
+Como se ha comentado anteriormente, existen diversas variaciones de aplicación del algoritmo evolutivo y este hecho da lugar a una distinción de estrategias a seguir según el propósito.
+
+A continuación se listan las diferentes variaciones de aplicación que existen:
+1. Algoritmo genético (Holland, 1975).
+`Holland, J. (1975). Adaptation In Natural and Artificial Systems. University of Michigan Press, Ann Arbor.`
+1. Programación evolutiva (Fogel, 1962).
+`Fogel, L.J. (1962) Autonomous automata, Industrial Research, 4, 14–19.`
+1. Estrategias de evolución (Rechenberg, 1965).
+`Rechenberg, I. (1965) Cybernetic Solution Path ofan Experimental Problem, Royal Aircraft Establishment, Library Translation No. 1122, Farnborough, UK.`
+1. Programación genética (Friedberg, 1958).
+`Friedberg, R.M. (1958) A learning machine: Part I, IBM Journal ofResearch and Development, 2(1), 2–13.`
+1. Evolución diferencial (Storn, 1995).
+`Storn, R. (1995) Constrained optimization, Dr. Dobb’s Journal, May, pp. 119–123.`
+1. Algoritmo cultural (Reynolds, 1994).
+`Reynolds, R.G. (1994) Introduction to cultural algorithms. In Proceedings of the Third Annual Conference on Evolutionary Programming, A.V. Sebald and L.J. Fogel (eds), World Scientific, Singapore, pp. 131–139.`
+
+De las diferentes aplicaciones, este documento solo desarrolla y expone el concepto de algoritmo genético. Variación del algoritmo evolutivo que se utiliza en el desarrollo de la parte práctica del proyecto.
+
 ###### 4.1.1.4.1. Algoritmo genético.
+El algoritmo génetico (en adelante GA) se trata de la aplicación del algoritmo evolutivo (EA) más popular. Es introducido y desarrollado por John H. Holland (1975) y sus estudiantes (DeJong, 1975). 
+
+`Holland, J. (1975). Adaptation In Natural and Artificial Systems. University of Michigan Press, Ann Arbor.`
+
+`DeJong, K. (1975). An Analysis of the Behavior of a Class of Genetic Adaptive Systems. PhD Dissertation, Department of Computer and Communication Sciences, University of Michigan, Ann Arbor.`
+
+Este algoritmo tiene dos aspectos que lo diferencian de la aplicacion de EA por defecto.
+1. El concepto de la genética y estructuración de datos.
+1. Se basa en una función de coste que evalua únicamente la aptitud de los fenotipos.
+
+Sobre el concepto genética, el término "genético" de los GA proviene de la emulación de poblaciones mendelianas. Poblaciones basadas en los modelos de herencia y evolución genética definidos por Gregor Mendel (1866). Los individuos de la población se representan mediante cadenas de información similares a una estructura genética como los cromosomas (Whitley, 1994). 
+
+`Gregor, M. (1866). Versuche über Plflanzen-hybriden. Verhandlungen des naturforschenden Ver-eines in Brünn, Bd. IV für das Jahr 1865, Abhand-lungen, 3–47.`
+
+`Whitley, D. (1994). A genetic algorithm tutorial. Statistics and computing.`
+
+Sobre la función de coste, GA se basa en una función de coste que evalua a cada individuo según sus características respecto a los demás. Este planteamiento difiere a otras aplicaciónes del EA en las que se precisa una descripción matemática del problema a optimizar (Goldberg, 1989).
+
+`Goldberg, D. (1989). Genetic Algorithms in Search, Optimization& Machine Learning`
+
+El algoritmo genético se puede considerar una aplicación del algoritmo evolutivo espejo. Aplica estrictamente dicho algoritmo pero con unas pequeñas diferencias que lo distinguen. A continuación, se nombran las diferencias que identifican un algoritmo genético en base a la terminología usada en el algoritmo evolutivo.
+
+**Genotipo y Fenotipo:** en el algoritmo genético el genotipo se expresa como una cadena de valores representando el concepto genetico de cromosoma. 
+
+**Evaluación y Aptitud:** únicamente se realiza una función de aptitud respecto el resto de cromosomas.
+
+
+Al solo aplicar una evaluación de aptitud en base a la población, se puede considerar al algoritmo genético como un proceso que desconoce el espacio del problema a resolver. Aún así, es capaz de encontrar una posible solución partiendo de la aleatoriedad. Esto lo convierte en un proceso útil en problemas en los que se desconoce como se han de resolver (Siddique & Adeli, 2013).
+
+`Siddique, N. & Adeli, H. (2013) Computational Intelligence: Synergies of Fuzzy Logic, Neural Networks and Evolutionary Computing`
 
 ## 8. Bibliografía.
 Darwin, C. (1859) On the Origin of Species.
@@ -296,15 +350,23 @@ Della, A. De Stefano, C. Marcelli, A. (2004) On the role of population size and 
 
 Federico, L. (2005) Entrenamiento de redes neuronales basado en algoritmos evolutivos.
 
+Fogel, L.J. (1962) Autonomous automata, Industrial Research, 4, 14–19.
+
+Friedberg, R.M. (1958) A learning machine: Part I, IBM Journal ofResearch and Development, 2(1), 2–13.
+
 Gardner, H. (1983) Multiple intelligences.
 
 Genotip. (s.f.). En Wikipedia. Recuperado el 17 de abril de 2021 de https://ca.wikipedia.org/wiki/Genotip
 
 Gregor, M. (1866). Versuche über Plflanzen-hybriden. Verhandlungen des naturforschenden Ver-eines in Brünn, Bd. IV für das Jahr 1865, Abhand-lungen, 3–47.
 
+Goldberg, D. (1989). Genetic Algorithms in Search, Optimization& Machine Learning.
+
 Haugeland, J. (1989) Artificial intelligence: The very idea.
 
 Hidalgo, J. Turrado, J. (2011) Algoritmos genéticos: Aplicación al problema de la mochila.
+
+Holland, J. (1975). Adaptation In Natural and Artificial Systems. University of Michigan Press, Ann Arbor.
 
 Kaplan, A. Haenlein, M. (2019) Siri, Siri, in my hand: Who’s the fairest in the land? On the interpretations, illustrations, and implications of artificial intelligence.
 
@@ -314,6 +376,13 @@ Poole, D. Mackworth, A. Goebel, R. (1998) Computational Intelligence: A Logical 
 
 Real Academia Española. (2020). Diccionario de la lengua española (23.4 ed.). Consultado en https://www.rae.es
 
-Siddique, N. & Adeli, H. (2013) Computational Intelligence: Synergies of Fuzzy Logic, Neural Networks and Evolutionary Computing
+Rechenberg, I. (1965) Cybernetic Solution Path ofan Experimental Problem, Royal Aircraft Establishment, Library Translation No. 1122, Farnborough, UK.
+
+Reynolds, R.G. (1994) Introduction to cultural algorithms. In Proceedings of the Third Annual Conference on Evolutionary Programming, A.V. Sebald and L.J. Fogel (eds), World Scientific, Singapore, pp. 131–139.
+
+Siddique, N. & Adeli, H. (2013) Computational Intelligence: Synergies of Fuzzy Logic, Neural Networks and Evolutionary Computing.
+
+Storn, R. (1995) Constrained optimization, Dr. Dobb’s Journal, May, pp. 119–123.
 
 Whitley, D. (1994). A genetic algorithm tutorial. Statistics and computing.
+
