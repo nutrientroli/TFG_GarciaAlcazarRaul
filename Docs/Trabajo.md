@@ -27,18 +27,17 @@
                 4.1.1.2.3. Población --- OK
                 4.1.1.2.4. Evaluación y aptitud --- OK
                 4.1.1.2.5. Operadores --- OK
-            4.1.1.3. Entrenamiento y Aprendizaje
-            4.1.1.4. Aplicación
-                4.1.1.4.1. Algoritmo genético
-        4.1.2. Red Neuronal
-            4.1.2.1. Contexto
-            4.1.2.2. Terminología
-                4.1.2.2.1. Neurona y Perceptron
-                4.1.2.2.1. Función de activación
-                4.1.2.2.2. Capa
-            4.1.2.3. Entrenamiento y Aprendizaje
-            4.1.2.4. Aplicación
-        4.1.3. Red Neuronal Evolutiva
+            4.1.1.3. Entrenamiento y Aprendizaje --- OK
+            4.1.1.4. Aplicación --- OK
+                4.1.1.4.1. Algoritmo genético --- OK
+        4.1.2. Red Neuronal Artificial --- OK
+            4.1.2.1. Contexto --- OK
+            4.1.2.2. Terminología --- OK
+                4.1.2.2.1. Neurona y Perceptron --- OK
+                4.1.2.2.1. Función de activación --- OK
+                4.1.2.2.2. Capa --- OK
+            4.1.2.3. Entrenamiento y Aprendizaje --- OK
+        4.1.3. Red Neuronal Artificial Evolutiva
             4.1.3.1. Contexto
             4.1.3.2. Terminología
             4.1.3.3. Entrenamiento y Aprendizaje
@@ -328,7 +327,7 @@ Sobre el concepto genética, el término "genético" de los GA proviene de la em
 
 Sobre la función de coste, GA se basa en una función de coste que evalua a cada individuo según sus características respecto a los demás. Este planteamiento difiere a otras aplicaciónes del EA en las que se precisa una descripción matemática del problema a optimizar (Goldberg, 1989).
 
-`Goldberg, D. (1989). Genetic Algorithms in Search, Optimization& Machine Learning`
+`Goldberg, D. (1989). Genetic Algorithms in Search, Optimization& Machine Learning.`
 
 El algoritmo genético se puede considerar una aplicación del algoritmo evolutivo espejo. Aplica estrictamente dicho algoritmo pero con unas pequeñas diferencias que lo distinguen. A continuación, se nombran las diferencias que identifican un algoritmo genético en base a la terminología usada en el algoritmo evolutivo.
 
@@ -339,7 +338,177 @@ El algoritmo genético se puede considerar una aplicación del algoritmo evoluti
 
 Al solo aplicar una evaluación de aptitud en base a la población, se puede considerar al algoritmo genético como un proceso que desconoce el espacio del problema a resolver. Aún así, es capaz de encontrar una posible solución partiendo de la aleatoriedad. Esto lo convierte en un proceso útil en problemas en los que se desconoce como se han de resolver (Siddique & Adeli, 2013).
 
+`Siddique, N. & Adeli, H. (2013) Computational Intelligence: Synergies of Fuzzy Logic, Neural Networks and Evolutionary Computing.`
+
+#### 4.1.2. Red Neuronal Artificial.
+En este punto se detalla el concepto de red neuronal artificial. Primero se situa un contexto y una visión de su historia. A continuación se describe la terminología y sus métodos de aprendizaje. Por último, se realiza una mención a las diferentes aplicaciones existentes.
+
+##### 4.1.2.1. Contexto.
+Una red neuronal artificial (en adelante ANN) es un análogo eléctrico de una red neuronal biológica (Siddique & Adeli, 2013). 
+
+`Siddique, N. & Adeli, H. (2013) Computational Intelligence: Synergies of Fuzzy Logic, Neural Networks and Evolutionary Computing.`
+
+La red neuronal biológica esta compuesta por un conjunto de neuronas. Cada neurona posee un soma (input) y un axón (output). Además, las uniones entre neuronas siempre siguen un patrón de unión entre el axón de una primera neurona y el soma de una segunda. De esta manera, las neuronas estan conectadas entre si y cuando existe un impulso eléctrico, este impulso recorre las neuronas según las conexiones existentes (McCulloch & Pitts, 1943).
+
+`McCulloch, W.S. and Pitts, W.H. (1943) A logical calculus of the ideas imminent in nervous activity, Bulletin of Mathematical Biophysics, 5, 115–133.`
+
+![Cruce](./assets/Neurona.PNG)
+
+Representación de neurona biológica
+
+`Salman, A. (2009) An Open Domain-Extensible Environment for Simulation-Based Scientific Investigation (ODESSI).`
+
+En la figura anterior, se observa la representación de una neurona biológica. Permite observar que disponen de ramificaciones en los puntos de conexión y es que las conexiones entre neuronas no tienen una relación de una a una, sinó que un soma puede estar conectado con múltipes axones de otras neuronas y un axón puede estar conectado con múltiples somas de otras neuronas.
+
+La primera implementación de red neuronal artificial fue creada por Warren McCulloch y Walter Pitts. Modelaron una ANN simple mediante circuitos eléctricos y diseñaron la neurona artificial presente en la siguiente figura (McCulloch & Pitts, 1943).
+
+`McCulloch, W.S. and Pitts, W.H. (1943) A logical calculus of the ideas imminent in nervous activity, Bulletin of Mathematical Biophysics, 5, 115–133.`
+
+![Cruce](./assets/Neurona2.PNG)
+
+Neurona del modelo McCulloch y Pitts
+
+`Siddique, N. & Adeli, H. (2013) Computational Intelligence: Synergies of Fuzzy Logic, Neural Networks and Evolutionary Computing.`
+
+El funcionamiento del modelo representado en el diagrama anterior es el siguiente:
+- "X" es el valor de entrada. Existen múltiples valores de entrada binarios (0 o 1) y los valores van variando durante la ejecución.
+- "W" es el valor de peso de la entrada. Define que importancia tiene la entrada según la neurona y es definido en el diseño de la neurona. El valor es fijo durante la ejecución.
+- "T" es el valor de umbral que ayuda a definir el valor de salida y es definido en el diseño de la neurona. El valor es fijo durante la ejecución.
+- "O" es el valor de salida. Una única salida de valor binario y el valor va variando durante la ejecución.
+
+Teniendo en cuenta las aclaraciones anteriores, se puede realizar una representación matemática. Esta representación se visualiza em la siguiente figura. 
+
+![Cruce](./assets/Neurona2_mat.PNG)
+
+`Siddique, N. & Adeli, H. (2013) Computational Intelligence: Synergies of Fuzzy Logic, Neural Networks and Evolutionary Computing.`
+
+Como se puede observar, este modelo planteado únicamente reproduce la comunicación entre neuronas, pero es un modelo que no es capaz de aprender. Quien diseña el modelo define como funciona y este no varia. 
+
+Es aquí donde entró Donald Hebb y introdujo un esquema de aprendizaje que utilizaba las neuronas como herramienta en donde guardar la información aprendida (Hebb, 1949). Este aprendizaje consiste en modificar los valores de los pesos en las conexiones para alterar el resultado final.
+
+`Hebb, D.O. (1949) The Organization ofBehavior: A Neuropsychological Theory, John Wiley, New York.`
+
+Unos años más tarde se introdujo un nuevo modelo de neurona que añadió un nuevo elemento de corrección a posibles errores. Se introdujo el concepto de "bias" a la equación (Rosenblatt, 1950). Además, durante la época en la que se propuso este nuevo modelo, hubo un cambio de terminología y se empezo a usar el término de perceptron.
+
+`Rosenblatt, F. (1958) The perceptron: a probabilistic model for information storage and organisation in the brain, Psychology Review, 65, 386–408.`
+
+Con la introducción del nuevo elemento, se puede observar una modificación de las equaciones y esquema anteriores.
+
+![Cruce](./assets/Neurona3.PNG)
+
+Percerptron Rosenblatt
+
+`Siddique, N. & Adeli, H. (2013) Computational Intelligence: Synergies of Fuzzy Logic, Neural Networks and Evolutionary Computing.`
+
+Hasta los años 80, el interés general sobre la investigación y uso de redes neuronales era muy bajo debido a que el perceptron era un modelo muy limitado, no era capaz de resolver funciones no-lineales (Minsky and Papert, 1969). Todo cambió cuando John Hopfield presento un paper en donde demostraba el uso potencial de las redes neuronales para dispositivos reales (Hopfield, 1982). 
+
+`Minsky, M. and Papert, S. (1969) Perceptrons, MIT Press, Cambridge, MA.`
+
+`Hopfield, J.J. (1982) Neural networks and physical systems with emergent collective computational abilities, Pro- ceedings ofNational Academy ofSciences, 79, 2554–2558.`
+
+Después del interés despertado por Hopfield, se realizaron o se descrubrieron trabajos de investigación que reconfigurarían las ANN a nivel de estructura, a nivel de aprendizaje y a nivel de optimización. Aquí se puede destacar una investigación que sucedió antes de los años 80 pero paso desapercibida. Se trata del aprendizaje de propagación hacia atrás (Werbos, 1974). Actualmente, uno de los métodos de aprendizaje de redes neuronales más usados.
+
+`Werbos, P.J. (1974) Beyond regression: new tools for prediction and analysis in the behavioural sciences, Doctoral Dissertation, Applied Mathematics, Harvard University.`
+
+Actualmente el modelo general de una ANN esta representado por la siguiente figura. Se trata de modelo perceptron multicapa.
+
+![Cruce](./assets/Neurona5.PNG)
+
+Perceptron multicapa
+
+`Siddique, N. & Adeli, H. (2013) Computational Intelligence: Synergies of Fuzzy Logic, Neural Networks and Evolutionary Computing.`
+
+
+##### 4.1.2.2. Terminología.
+A continuación se detalla la terminología usada en las ANN y se oberva como es el modelo actual de red neuronal artificial general, entrando en detalle en cada concepto del perceptron multicapa.
+
+###### 4.1.2.2.1. Neurona y Perceptron.
+La neurona o Perceptron es un elemento de procesamiento (Yao, 1999). La modelo actual de la neurona presenta la siguiente representación.
+
+`Yao, X. (1990) Evolving artificial neural networks` 
+
+![Cruce](./assets/Neurona4.PNG)
+
+Perceptron
+
 `Siddique, N. & Adeli, H. (2013) Computational Intelligence: Synergies of Fuzzy Logic, Neural Networks and Evolutionary Computing`
+
+El modelo actual es prácticamente el mismo que el presentado por Rosenblatt (1958), pero con la evolución de las redes neuronales, se ha definido de forma diferente algun concepto para una mayor abstracción y mejor flexibilidad. De hecho, el elemento más diferenciador entre los dos modelos es la identificación de la función de activación ( ***f(.)*** ).
+
+`Rosenblatt, F. (1958) The perceptron: a probabilistic model for information storage and organisation in the brain, Psychology Review, 65, 386–408.`
+
+Con este nuevo concepto identificado, las equaciones matemáticas también han variado en cierta medida. A continuación se observa el proceso matemático que sigue una neurona para obtener su valor de salida. 
+
+![Cruce](./assets/funcionActivacion2.PNG)
+
+`Siddique, N. & Adeli, H. (2013) Computational Intelligence: Synergies of Fuzzy Logic, Neural Networks and Evolutionary Computing`
+
+Primero se calcula el valor de salida sin aplicar la función de activación aplicando una suma ponderada y aplicando una desviación de umbral. Posteriormente, se aplica la función de activación.
+
+![Cruce](./assets/funcionActivacion3.PNG)
+
+`Siddique, N. & Adeli, H. (2013) Computational Intelligence: Synergies of Fuzzy Logic, Neural Networks and Evolutionary Computing`
+
+El valor resultante de la función de activación, es el valor que recibirà la siguiente neurona situada en la siguiente capa.
+
+###### 4.1.2.2.1. Función de activación.
+La función de activación permite definir el tipo de salida de una neurona (lineal o no-lineal). Este concepto existía desde el primer modelo de neurona (McCulloch & Pitts, 1943) y también estaba presente en el modelo de perceptron de Rosenblatt (1958). Estos modelos usaban una función de activación del tipo escalón.
+
+`McCulloch, W.S. and Pitts, W.H. (1943) A logical calculus of the ideas imminent in nervous activity, Bulletin of Mathematical Biophysics, 5, 115–133.`
+
+`Rosenblatt, F. (1958) The perceptron: a probabilistic model for information storage and organisation in the brain, Psychology Review, 65, 386–408.`
+
+A continuación se muestran las funciones de activación más típicas.
+
+![Cruce](./assets/funcionActivacion.PNG)
+
+`Nacelle, A. (2009) Redes neuronales artificiales.`
+
+Como se menciona anteriormente, los modelos iniciales ya presentaban el concepto de función de activación y concretamente la función de escalón (0 o 1 como valor). El uso de esta función fue debido al medio en el que se diseñaron los modelos. Se trata de una representación de circuito eléctrico en donde el valor "0" corresponde a que no hay impulso y el valor "1" a que hay impulso eléctrico. 
+
+Esta función de activación de escalón, fue una de las limitaciones que se detectaron en los años 60. Matemáticamente, un conjunto de equaciones lineales dan como resultado una única ecuación lineal. Por lo que aunque se añadieran neuronas, el modelo siempre se podía simplificar en una única neurona (Minsky and Papert, 1969). Con la introducción de funciones no-lineales, esta limitación se remedió y a día de hoy permiten obtener resultados complejos medianto la combinación de neuronas y sus correspondientes funciones de activación.
+
+`Minsky, M. and Papert, S. (1969) Perceptrons, MIT Press, Cambridge, MA.`
+
+###### 4.1.2.2.2. Capa.
+Una capa es una medio de agrupación de neuronas. Cada capa puede disponer de como mínimo una neurona y no existe un número determinado como máximo. Además, el resultado de las neuronas de cada capa es conectado con cada una de las neuronas de la siguiente capa (Nacelle, 2009). Existen variaciones en donde puede existir la no conexión entre algunas neuronas de capas contiguas, pero en términos generales, todas se conectan.
+
+`Nacelle, A. (2009) Redes neuronales artificiales.`
+
+En toda ANN existen mínimo dos capas. La capa de entrada y la capa de salida. Como su nombre indica, son las capas que se relacionan con aspectos externos. La primera recibe una série de datos y la segunda es la que comunica el resultado de esos datos procesados (Siddique & Adeli, 2013). Internamente, la red puede disponer de las denominadas capas ocultas. El número de capas ocultas depende del diseño que uno quiera realizar.
+
+`Siddique, N. & Adeli, H. (2013) Computational Intelligence: Synergies of Fuzzy Logic, Neural Networks and Evolutionary Computing`
+
+![Cruce](./assets/ANN_Capas.PNG)
+
+`Alvarado, M. Meneses-Bautista, F.D. (2017). Pronóstico del tipo de cambio USD/MXN con redes neuronales de retropropagación.`
+
+El número de neuronas por capas es un número definido por el que diseña el modelo. Entiendiendo las neuronas como unidades de procesamiento (Yao, 1999), según el problema a resolver puede interesar disponer de más o menos neuronas, ya que que cada neurona puede llegar a especializarse en un ámbito del problema concreto.
+
+`Yao, X. (1990) Evolving artificial neural networks`
+
+Esta especialización en ningún caso es planteada en el diseño de la ANN. Se realiza una vez se ha entrenado la red.
+
+##### 4.1.2.3. Entrenamiento y Aprendizaje.
+El aprendizaje de una ANN es un procedimiento que modifica los pesos de las conexiones y la desviación del umbral de las neuronas. Este procedimiento es denominado entrenamiento y consiste en forzar a una red para dar un respuesta concreta a una entrada de datos específica (Siddique & Adeli, 2013).
+
+`Siddique, N. & Adeli, H. (2013) Computational Intelligence: Synergies of Fuzzy Logic, Neural Networks and Evolutionary Computing`
+
+Existen muchos procesos de aprendizaje, pero se pueden agrupar en dos tipos de aprendizaje:
+- Aprendizaje supervisado
+- Aprendizaje no supervisado
+
+El aprendizaje supervisado consiste en proporcionar al modelo los datos de entrada y salida que se espera obtener con el procesamiento de la red. Una vez obtenido el valor proporcionado con la red, se compara con el objetivo y si existen diferencias de valores, se ajustan los pesos para aproximarse al resultado objetivo(Siddique & Adeli, 2013).
+
+`Siddique, N. & Adeli, H. (2013) Computational Intelligence: Synergies of Fuzzy Logic, Neural Networks and Evolutionary Computing`
+
+Respecto al aprendizaje no supervisado, se refiere al aprendizaje que no conoce el valor objetivo. Al no conocerse la información sobre si es correcto o incorrecto, el modelo busca regularidades, patrones o tendencias para ajustar sus pesos (Siddique & Adeli, 2013).
+
+`Siddique, N. & Adeli, H. (2013) Computational Intelligence: Synergies of Fuzzy Logic, Neural Networks and Evolutionary Computing`
+
+Existen diferentes técnicas para realizar cada uno de los aprendizajes mencionados. De entre ellas, se puede destacar al aprendizaje mediante la propagación hacia atrás (Backpropagation) que introdujo Werbos (1974). Se trata de un algoritmo de aprendizaje supervisado que optimiza el proceso de reconfiguración de la red neuronal respecto a otros procesos. En vez de recorrer cada una de las opciones posibles a través de las neuras para configurar sus pesos, realiza el mínimo recorrido necesario según el peso que a tenido una neurona en el error encontrado.
+
+`Werbos, P.J. (1974) Beyond regression: new tools for prediction and analysis in the behavioural sciences, Doctoral Dissertation, Applied Mathematics, Harvard University.`
 
 ## 8. Bibliografía.
 Darwin, C. (1859) On the Origin of Species.
@@ -364,11 +533,21 @@ Goldberg, D. (1989). Genetic Algorithms in Search, Optimization& Machine Learnin
 
 Haugeland, J. (1989) Artificial intelligence: The very idea.
 
+Hebb, D.O. (1949) The Organization ofBehavior: A Neuropsychological Theory, John Wiley, New York.
+
 Hidalgo, J. Turrado, J. (2011) Algoritmos genéticos: Aplicación al problema de la mochila.
 
 Holland, J. (1975). Adaptation In Natural and Artificial Systems. University of Michigan Press, Ann Arbor.
 
+Hopfield, J.J. (1982) Neural networks and physical systems with emergent collective computational abilities, Pro- ceedings ofNational Academy ofSciences, 79, 2554–2558.
+
 Kaplan, A. Haenlein, M. (2019) Siri, Siri, in my hand: Who’s the fairest in the land? On the interpretations, illustrations, and implications of artificial intelligence.
+
+Minsky, M. and Papert, S. (1969) Perceptrons, MIT Press, Cambridge, MA.
+
+McCulloch, W.S. and Pitts, W.H. (1943) A logical calculus of the ideas imminent in nervous activity, Bulletin of Mathematical Biophysics, 5, 115–133.
+
+Nacelle, A. (2009) Redes neuronales artificiales.
 
 Piaget, J. (1963) The Origins of Intelligence in Children.
 
@@ -380,9 +559,17 @@ Rechenberg, I. (1965) Cybernetic Solution Path ofan Experimental Problem, Royal 
 
 Reynolds, R.G. (1994) Introduction to cultural algorithms. In Proceedings of the Third Annual Conference on Evolutionary Programming, A.V. Sebald and L.J. Fogel (eds), World Scientific, Singapore, pp. 131–139.
 
+Rosenblatt, F. (1958) The perceptron: a probabilistic model for information storage and organisation in the brain, Psychology Review, 65, 386–408.
+
+Salman, A. (2009) An Open Domain-Extensible Environment for Simulation-Based Scientific Investigation (ODESSI).
+
 Siddique, N. & Adeli, H. (2013) Computational Intelligence: Synergies of Fuzzy Logic, Neural Networks and Evolutionary Computing.
 
 Storn, R. (1995) Constrained optimization, Dr. Dobb’s Journal, May, pp. 119–123.
 
+Werbos, P.J. (1974) Beyond regression: new tools for prediction and analysis in the behavioural sciences, Doctoral Dissertation, Applied Mathematics, Harvard University.
+
 Whitley, D. (1994). A genetic algorithm tutorial. Statistics and computing.
+
+Yao, X. (1990) Evolving artificial neural networks.
 
