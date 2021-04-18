@@ -480,7 +480,7 @@ En toda ANN existen mínimo dos capas. La capa de entrada y la capa de salida. C
 
 `Siddique, N. & Adeli, H. (2013) Computational Intelligence: Synergies of Fuzzy Logic, Neural Networks and Evolutionary Computing`
 
-![Cruce](./assets/ANN_Capas.PNG)
+![Cruce](./assets/ANN_Capas.png)
 
 `Alvarado, M. Meneses-Bautista, F.D. (2017). Pronóstico del tipo de cambio USD/MXN con redes neuronales de retropropagación.`
 
@@ -633,11 +633,11 @@ Generalmente, la aplicación de DOD en un software ofrece una série de caracter
 
 `Llopis, N. (2009). Data-Oriented Design (Or Why You Might Be Shooting Yourself in The Foot With OOP). Recuperado de https://gamesfromwithin.com/data-oriented-design/comment-page-1`
 
-- Simplifica la paralelización. Mejora la ejecución multihilo debido a minimiza la sincronización entre los hilos de ejecución.
-- Aprovecha el uso de caché. Los datos se guardan de la manera más óptima para su gestión en caché.
-- Es modular. El código resulta en pequeñas funciones y pocas dependencias.
-- Facilidad de testeo. Al realizar un análisis de los datos en su implementación, se tienen en cuenta el dato de entrada y su transformación de manera localizada.
-- Integración con otros paradigmas. DOD se trata de un paradigma centrado en la gestión de acceso a datos que puede convivir con otros paradigmas. Por lo que se puede detectar un problema de rendimiento en una zona concreta del software y modificar únicamente ese espacio.
+- **Simplifica la paralelización**. Mejora la ejecución multihilo debido a minimiza la sincronización entre los hilos de ejecución.
+- **Aprovecha el uso de caché**. Los datos se guardan de la manera más óptima para su gestión en caché.
+- **Es modular**. El código resulta en pequeñas funciones y pocas dependencias.
+- **Facilidad de testeo**. Al realizar un análisis de los datos en su implementación, se tienen en cuenta el dato de entrada y su transformación de manera localizada.
+- **Integración con otros paradigmas**. DOD se trata de un paradigma centrado en la gestión de acceso a datos que puede convivir con otros paradigmas. Por lo que se puede detectar un problema de rendimiento en una zona concreta del software y modificar únicamente ese espacio.
 
 ## 8. Bibliografía.
 Darwin, C. (1859) *On the Origin of Species*.
