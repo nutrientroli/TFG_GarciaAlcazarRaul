@@ -51,10 +51,10 @@
                 4.2.1.2.1. Array of Structs y Struct of Arrays --- OK
                 4.2.1.2.2. Entity System o Entity Component System --- OK
             4.2.1.3. Características --- OK
-        4.2.2. Unity3D
-            4.2.2.1. Contexto
-            4.2.2.2. Lenguaje C#
-            4.2.2.3. Unity's Package Manager.
+        4.2.2. Unity3D --- OK
+            4.2.2.1. Contexto --- OK
+            4.2.2.2. Lenguaje C# --- OK
+            4.2.2.3. Versiones de Unity3D y Unity's Package Manager --- OK
         4.2.3. Unity Data-Oriented Tech Stack (DOTS)
             4.2.3.1. Contexto
             4.2.3.2. ECS
@@ -639,6 +639,52 @@ Generalmente, la aplicación de DOD en un software ofrece una série de caracter
 - **Facilidad de testeo**. Al realizar un análisis de los datos en su implementación, se tienen en cuenta el dato de entrada y su transformación de manera localizada.
 - **Integración con otros paradigmas**. DOD se trata de un paradigma centrado en la gestión de acceso a datos que puede convivir con otros paradigmas. Por lo que se puede detectar un problema de rendimiento en una zona concreta del software y modificar únicamente ese espacio.
 
+#### 4.2.2. Unity3D.
+En este capítulo se describe la herramienta o programa usado en la implementación de la parte práctica del proyecto. Se trata de una herramineta relevante para el documento debido a que define y proporciona ciertas limitaciones y funcionalidades que pueden no encontrarse en otros programas similares.
+
+En la explicación de la herramienta, se destaca su descripción como programa, el lenguaje de programación que interpreta y la capacidad de gestionar dentro del programa con utilidades que no vienen de série en el programa.
+
+##### 4.2.2.1. Contexto.
+Unity3D es un software que permite desarrollar juegos para múltiples plataformas (web, ordenador, móvil, consolas). El programa dispone de ciertas librerías y sistemas como un motor gráfico, un motor de físicas, animaciones, inteligencia artificial, entre otros, que facilitan al desarrollador su desempeño al crear un videojuego o cualquier tipo de software parecido (por ejemplo, una película de animación, una exposición en realidad virtual, …).
+
+El programa dispone de un editor integrado que permite visualizar y gestionar diferentes aspectos del videojuego. Tanto la visualización del juego, el análisis del rendimiento, la jerarquía de los objetos de la escena de juego, sus propiedades y funcionalidad. Unity3D muestra la información de manera intuitiva y útil para el desarrollador. Permite cierta flexibilidad de personalización para adecuarse a cada tipo de desarrollo.
+
+![Cruce](./assets/Unity.PNG)
+
+##### 4.2.2.2. Lenguaje C#.
+Unity3D permite añadir comportamiento, funcionalidades y lógica al proyecto mediante scripting. Los ficheros de scripting son escritos en un lenguaje concreto que Unity3D puede entender y ejecutar. Este lenguaje es el lenguaje C#.
+
+C# es un lenguaje de programación desarrollado por Microsoft en el año 2000. Se trata de un lenguaje moderno, fuertemente tipado y basado en componentes y objetos. Proviene de la familia de lenguajes C y se ejecuta en el ecosistema .NET (Microsoft, 2021).
+
+`Microsoft. (2021). Paseo por el lenguaje C#. Recuperado de https://docs.microsoft.com/es-es/dotnet/csharp/tour-of-csharp/`
+
+##### 4.2.2.3. Versiones de Unity3D y Unity's Package Manager.
+Unity3D dispone de diferentes versiones disponibles. Cada versión dispone de su propio ciclo de actualizaciones y con cada versión añaden o modifican ciertos paquetes de utilidades o arreglan problemas que tienen versiones anteriores.
+
+Ciertas versiones disponen del término Long Term Support (en adelante LTS). Estas últimas son las versiones que tienen un mantenimiento de larga duración. Útil en caso de desarrollos de larga duración o comerciales. 
+
+Este sistema de versiones del propio software viene acompañado por un sistema de paquetes llamado Unity’s Package Manager en donde se encuentran diferentes paquetes que proporcionan funcionalidad añadida al propio editor de base. Dichos paquetes pueden ser herramientas de editor, librerías, paquetes de texturas, …
+El funcionamiento del gestor de paquetes es el siguiente descrito en la figura situada a continuación. Cuando Se abre un proyecto en Unity3D, el gestor de paquetes consulta el archivo de manifiesto de proyecto (1). Archivo donde se especifican las dependencias del proyecto. Una vez leído el manifiesto, se realiza una consulta (2) al servidor de registro de los paquetes (3) por cada paquete indicado como dependencia. El servidor devuelve la información del paquete al gestor de paquetes (4) de Unity3D y se instalan los paquetes en el proyecto.
+
+![Cruce](./assets/Unity2.PNG)
+
+`Unity Technologies. (s. d.) Unity’s Package Manager. Unity Manual. Recuperado de https://docs.unity3d.com/Manual/Packages.html`
+
+Es a través de este sistema de paquetes que Unity Technologies esta añadiendo una serie de librerías para integrar funcionalidad basada en la programación orientada a datos.
+
+#### 4.2.3. Unity Data-Oriented Tech Stack (DOTS).
+##### 4.2.3.1. Contexto.
+##### 4.2.3.2. ECS.
+###### 4.2.3.2.1. Archetypes.
+###### 4.2.3.2.2. ArchetypeChunk.
+###### 4.2.3.2.3. Entity Queries.
+##### 4.2.3.3. C# Job System.
+##### 4.2.3.4. Burst Compiler.
+##### 4.2.3.4. Otros paquetes.
+
+
+
+
 ## 8. Bibliografía.
 Darwin, C. (1859) *On the Origin of Species*.
 
@@ -684,6 +730,8 @@ Llopis, N. (2009). *Data-Oriented Design (Or Why You Might Be Shooting Yourself 
 
 Martin, A. (2007). *Entity Systems are the future of MMOG development - Part 2*. Recuperado de http://t-machine.org/index.php/2007/11/11/entity-systems-are-the-future-of-mmog-development-part-2/
 
+Microsoft. (2021). *Paseo por el lenguaje C#*. Recuperado de https://docs.microsoft.com/es-es/dotnet/csharp/tour-of-csharp/
+
 Minsky, M. and Papert, S. (1969) *Perceptrons*, MIT Press, Cambridge, MA.
 
 McCulloch, W.S. and Pitts, W.H. (1943) *A logical calculus of the ideas imminent in nervous activity*, Bulletin of Mathematical Biophysics, 5, 115–133.
@@ -711,6 +759,8 @@ Sharp, J. (1980). *Data oriented program design*. ACM SIGPLAN Notices.
 Siddique, N. & Adeli, H. (2013) *Computational Intelligence: Synergies of Fuzzy Logic, Neural Networks and Evolutionary Computing*.
 
 Storn, R. (1995) *Constrained optimization*, Dr. Dobb’s Journal, May, pp. 119–123.
+
+Unity Technologies. (s. d.) *Unity’s Package Manager*. Unity Manual. Recuperado de https://docs.unity3d.com/Manual/Packages.html
 
 Werbos, P.J. (1974) *Beyond regression: new tools for prediction and analysis in the behavioural sciences*, Doctoral Dissertation, Applied Mathematics, Harvard University.
 
