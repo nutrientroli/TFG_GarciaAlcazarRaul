@@ -13,7 +13,7 @@
 
 ## Índice
 ```
-1. Introducción
+1. Introducción --- OK
 2. Objetivos --- OK 
     2.1. Objetivos principales --- OK 
     2.2. Objetivo secundario --- OK 
@@ -73,6 +73,15 @@
 7. Conclusiones y reflexión
 8. Bibliografía  
 ```
+## 1. Introducción.
+Durante varios años, en la indústria de videojuegos se ha debatido el concepto Data-Oriented Design (DOD) debido al gran impacto en rendimiento que ofrece dicho paradigma. Con la presentación de la pila de tecnologías basadas en datos (DOTS) por parte de Unity Technologies, se ha puesto al paradigma de programación orientada a datos en el punto de mira. 
+
+Además, existe una vertiente dentro del sector que utiliza la inteligencia artificial (AI) para realizar o ayudar en el desarrollo de videojuegos. Se pueden observar herramientas de remasterización, herramientas de generación de escenarios y el uso de AI para generar misiones como es el caso de Skyrim.
+
+Este proyecto busca enlazar los conceptos de DOD y AI en el desarrollo de videojuegos. Por este motivo, el objetivo del trabajo es implementar un modelo de inteligencia artificial concreto mediante el uso de este paradigma de programación. Al finalizar el desarrollo, se espera disponer de un sistema que ayude a diseñar y entrenar el comportamiento de los NPCs de un juego.
+
+Este documento se ha dividido en diferentes capítulos que se dividen en dos grandes bloques. El primer bloque consiste en la investigación y documentación, en donde se encuentran los objetivos, los referentes y el marco teórico. Seguidos por los capítulos que forman parte del bloque de desarrollo del proyecto, en donde se define la metodología, la planificación, las herramientas usadas y se implementan los conceptos. Finalmente se describen las conclusiones obtenidas en la realización del trabajo.
+
 
 ## 2. Objetivos.
 En esta sección se detallan los objetivos presentes en la realización de este proyecto. Estos objetivos han estado divididos según su tipología para con el proyecto. A continuación se detallan los objetivos principales seguidos por los objetivos secundarios.
