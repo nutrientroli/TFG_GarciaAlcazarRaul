@@ -15,9 +15,10 @@
 ```
 1. Introducción
 2. Objetivos
-3. Análisis de referentes
-    3.1. Xenobots
-    3.2. Overwatch
+3. Análisis de referentes --- OK
+    3.1. Xenobots --- OK
+    3.2. Overwatch --- OK
+    3.3. Unity3D --- OK
 4. Marco teórico --- OK 
     4.1. Inteligencia Artificial --- OK 
         4.1.1. Computación Evolutiva --- OK
@@ -70,6 +71,57 @@
 7. Conclusiones y reflexión
 8. Bibliografía  
 ```
+## 3. Análisis de referentes.
+En esta sección se detallan los diversos referentes de este proyecto en materia de inteligencia artificial y aplicación del paradigma de programación orientado a datos. En primer lugar, se expone un estudio que aplica uno de los conceptos de inteligencia artificial de interés en este proyecto. Posteriormente, se observa un juego con un gran éxito comercial desarrollado con principios y sistemas de programación orientada a datos. Finalmente se menciona un programa que esta siendo reescrito a nivel de código para implementar el paradigma de orientación de datos.
+
+### 3.1. Xenobots
+Los xenobots son organismos biológicos sintéticos creados célula a célula que con su estructura pueden realizar tareas sencillas (Kriegman et al, 2019).
+
+`Kriegman, S. Blackiston, D. Levin, M. Bongard, J. (2019) A scalable pipeline for designing reconfigurable organisms.`
+
+Se podría decir que se trata de robots construidos con células vivas. De hecho, el nombre de xenobot proviene del origen de las células usadas. Esas células provienen de la especie Xenopus laevis, un tipo de rana que tiene posee un tamaño de embrión superior a la media.
+
+![EA](./assets/xenobots4.PNG)
+
+`Kriegman, S. (2019) Computer-designed organisms. A scalable pipeline for designing novel organisms, such as xenobots. Recuperado de https://cdorgs.github.io/`
+
+Para la creación de estos bots, se realiza una búsqueda de formas viables que posteriormente son replicadas biológicamente. Esta búsqueda, se basa en la emulación de las células y se lleva a cabo mediante un algoritmo evolutivo. Las células usadas son células cardiacas (que realizan contracciones y expansiones) y células de piel (que sirven como unión)
+
+![EA](./assets/xenobots1.PNG)
+
+`Kriegman, S. (2019) Computer-designed organisms. A scalable pipeline for designing novel organisms, such as xenobots. Recuperado de https://cdorgs.github.io/`
+
+Los modelos son sometidos a una evaluación y van sufriendo cambios durante el paso del tiempo de manera que cuando más tiempo se realiza la búsqueda, más óptima es la forma encontrada.
+
+![EA](./assets/xenobots2.PNG)
+
+`Kriegman, S. (2019) Computer-designed organisms. A scalable pipeline for designing novel organisms, such as xenobots. Recuperado de https://cdorgs.github.io/`
+
+Para este proyecto, los xenobots son una referencia debido a la utilización de inteligencia artificial, en concreto el algoritmo evolutivo, para obtener una solución compleja y difícil de definir previamente.
+
+### 3.2. Overwatch
+Overwatch es un videojuego desarrollado por Blizzard Entertainment publicado en 2016. Es un juego multijugador catalogado dentro del género First Person Shooter en concreto en el Hero Shooter. Un juego en primera persona en el que los personajes que se controlan disponen de habilidades diferentes según el héroe escogido, obligando al jugador a tener un estilo de juego diferente por héroe seleccionado.
+
+Se trata de un juego de éxito, dispone de más de 40 millones de ventas y superó los mil millones de dólares por comercialización antes de cumplir con su primer aniversario.
+
+![EA](./assets/Overwatch.PNG)
+
+`Gallego. (2016). Análisis de Overwatch, el shooter que estabas esperando (quizás sin saberlo). Vidaextra. Recuperado el 8 de febrero de 2021 de https://www.vidaextra.com/analisis/analisis-de-overwatch-el-shooter-que-estabas-esperando-quizas-sin-saberlo`
+
+Timothy Ford, trabajador de Blizzard, detallo en la GDC (2019) como este juego fue desarrollado implementando la programación orientada a datos en concreto la arquitectura ECS que se detalla en el capítulo 4.2.1.2.2. El juego proporciona un ejemplo de como esta implementación puede ser usada en juegos con enfoque comercial. Además también valida su uso para futuros proyectos y consolida que este tipo de programación proporciona beneficios concretos. 
+
+`Ford. T. (2019). Overwatch Gameplay Architecture and Netcode [Vídeo]. Recuperado de https://www.youtube.com/watch?v=W3aieHjyNvw`
+
+### 3.3. Unity3D
+Unity3D es un motor de videojuegos que permite crear y desarrollar juegos o software basado en gráficos (Películas animadas, exposiciones en VR,…) con facilidad. Proporciona una serie de herramientas y librerías útiles en la realización del desarrollo que de otra manera, un desarrollador podría dedicar años en crear. Centra los esfuerzos del desarrollo en el producto y no en la herramienta.
+
+Se trata de un programa muy popular. En 2019, el 53% de los 1000 juegos de móvil más rentables del mundo habían sido desarrollados con el programa Unity3D y además, los juegos desarrollados con esta herramienta para ordenadores, consolas y móviles representaban más de un 50% del total (Unity Technologies, s.f.).
+
+`Unity Technologies. (s. d.). Welcome to Unity. Recuperado el 8 de febrero de 2021 de https://unity.com/our-company`
+
+Actualmente, los desarrolladores de Unity3D están realizando una serie de cambios en el programa con la intención de mejorar el rendimiento de éste y así ofrecer una mejor herramienta a los usuarios. Estos cambios pasan por reescribir el programa utilizando el paradigma de programación orientado a datos.
+
+Unity3D esta realizando una evangelización de la programación orientada a datos y es gracias a ellos que a día de hoy, en el sector de videojuegos empieza a ser un término conocido. Además, ofrecen librerías para empezar a usar estos nuevos sistemas.
 
 ## 4. Marco teórico.
 Este proyecto se centra en la implementación de conceptos de inteligencia artificial aplicando un paradigma de programación específico. Para entender el funcionamiento de dichos conceptos hay que disponer de nociones de inteligencia artificial y conceptos de desarrollo de software. 
@@ -803,7 +855,11 @@ Federico, L. (2005) *Entrenamiento de redes neuronales basado en algoritmos evol
 
 Fogel, L.J. (1962) *Autonomous automata*, Industrial Research, 4, 14–19.
 
+Ford. T. (2019, febrero 8). *Overwatch Gameplay Architecture and Netcode* [Vídeo]. Recuperado de https://www.youtube.com/watch?v=W3aieHjyNvw
+
 Friedberg, R.M. (1958) *A learning machine: Part I*, IBM Journal ofResearch and Development, 2(1), 2–13.
+
+Gallego. (2016). *Análisis de Overwatch, el shooter que estabas esperando (quizás sin saberlo)*. Vidaextra. Recuperado el 8 de febrero de 2021 de https://www.vidaextra.com/analisis/analisis-de-overwatch-el-shooter-que-estabas-esperando-quizas-sin-saberlo
 
 Gardner, H. (1983) *Multiple intelligences*.
 
@@ -830,6 +886,10 @@ Hopfield, J.J. (1982) *Neural networks and physical systems with emergent collec
 Hougaard K. (2019). *Creating a third-person zombie shooter with DOTS*. Unity Blog. Recuperado de  https://blogs.unity3d.com/es/2019/11/27/creating-a-third-person-zombie-shooter-with-dots/
 
 Kaplan, A. Haenlein, M. (2019) *Siri, Siri, in my hand: Who’s the fairest in the land? On the interpretations, illustrations, and implications of artificial intelligence*.
+
+Kriegman, S. (2019) *Computer-designed organisms. A scalable pipeline for designing novel organisms, such as xenobots*. Recuperado de https://cdorgs.github.io/
+
+Kriegman, S. Blackiston, D. Levin, M. Bongard, J. (2019) *A scalable pipeline for designing reconfigurable organisms*.
 
 Liechty, D. (2015). *Object-Oriented/Data-Oriented Design of a Direct Simulation Monte Carlo Algorithm*. Journal of Spacecraft and Rockets.
 
@@ -874,6 +934,8 @@ Unity Technologies. (2019). *ECS concepts*. Unity Manual. Recuperado de https://
 Unity Technologies. (2020). *C# Job System*. Unity Manual. Recuperado de https://docs.unity3d.com/2019.3/Documentation/Manual/JobSystem.html
 
 Unity Technologies. (s. d.) *Unity’s Package Manager*. Unity Manual. Recuperado de https://docs.unity3d.com/Manual/Packages.html
+
+Unity Technologies. (s. d.). *Welcome to Unity*. Recuperado el 8 de febrero de 2021 de https://unity.com/our-company
 
 Werbos, P.J. (1974) *Beyond regression: new tools for prediction and analysis in the behavioural sciences*, Doctoral Dissertation, Applied Mathematics, Harvard University.
 
