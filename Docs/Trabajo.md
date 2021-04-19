@@ -14,7 +14,9 @@
 ## Índice
 ```
 1. Introducción
-2. Objetivos
+2. Objetivos --- OK 
+    2.1. Objetivos principales --- OK 
+    2.2. Objetivo secundario --- OK 
 3. Análisis de referentes --- OK
     3.1. Xenobots --- OK
     3.2. Overwatch --- OK
@@ -71,10 +73,27 @@
 7. Conclusiones y reflexión
 8. Bibliografía  
 ```
+
+## 2. Objetivos.
+En esta sección se detallan los objetivos presentes en la realización de este proyecto. Estos objetivos han estado divididos según su tipología para con el proyecto. A continuación se detallan los objetivos principales seguidos por los objetivos secundarios.
+
+### 2.1. Objetivos principales.
+El proyecto tiene como finalidad la investigación, documentación y implementación de una red neuronal evolutiva mediante Data-Oriented Design. Se pueden
+observar como objetivos principales los siguientes objetivos:
+
+1. Implementar modelos de redes neuronales evolutivas mediante programación orientada a datos.
+
+1. Investigar y documentar sobre la programación orientada a datos y los conceptos de inteligencia artificial utilizados.
+
+### 2.2. Objetivo secundario.
+En la realización del primer objetivo principal, también se realiza el siguiente objetivo secundario. Objetivo que sirve para evaluar que tipo de sinergia aporta el uso del paradigma objeto del trabajo a los conceptos de inteligencia artificial propuestos.
+
+1. Identificar las ventajas e inconvenientes del paradigma Data-Oriented Design en la construcción de modelos de red neuronales y algoritmos evolutivos.
+
 ## 3. Análisis de referentes.
 En esta sección se detallan los diversos referentes de este proyecto en materia de inteligencia artificial y aplicación del paradigma de programación orientado a datos. En primer lugar, se expone un estudio que aplica uno de los conceptos de inteligencia artificial de interés en este proyecto. Posteriormente, se observa un juego con un gran éxito comercial desarrollado con principios y sistemas de programación orientada a datos. Finalmente se menciona un programa que esta siendo reescrito a nivel de código para implementar el paradigma de orientación de datos.
 
-### 3.1. Xenobots
+### 3.1. Xenobots.
 Los xenobots son organismos biológicos sintéticos creados célula a célula que con su estructura pueden realizar tareas sencillas (Kriegman et al, 2019).
 
 `Kriegman, S. Blackiston, D. Levin, M. Bongard, J. (2019) A scalable pipeline for designing reconfigurable organisms.`
@@ -99,7 +118,7 @@ Los modelos son sometidos a una evaluación y van sufriendo cambios durante el p
 
 Para este proyecto, los xenobots son una referencia debido a la utilización de inteligencia artificial, en concreto el algoritmo evolutivo, para obtener una solución compleja y difícil de definir previamente.
 
-### 3.2. Overwatch
+### 3.2. Overwatch.
 Overwatch es un videojuego desarrollado por Blizzard Entertainment publicado en 2016. Es un juego multijugador catalogado dentro del género First Person Shooter en concreto en el Hero Shooter. Un juego en primera persona en el que los personajes que se controlan disponen de habilidades diferentes según el héroe escogido, obligando al jugador a tener un estilo de juego diferente por héroe seleccionado.
 
 Se trata de un juego de éxito, dispone de más de 40 millones de ventas y superó los mil millones de dólares por comercialización antes de cumplir con su primer aniversario.
@@ -112,7 +131,7 @@ Timothy Ford, trabajador de Blizzard, detallo en la GDC (2019) como este juego f
 
 `Ford. T. (2019). Overwatch Gameplay Architecture and Netcode [Vídeo]. Recuperado de https://www.youtube.com/watch?v=W3aieHjyNvw`
 
-### 3.3. Unity3D
+### 3.3. Unity3D.
 Unity3D es un motor de videojuegos que permite crear y desarrollar juegos o software basado en gráficos (Películas animadas, exposiciones en VR,…) con facilidad. Proporciona una serie de herramientas y librerías útiles en la realización del desarrollo que de otra manera, un desarrollador podría dedicar años en crear. Centra los esfuerzos del desarrollo en el producto y no en la herramienta.
 
 Se trata de un programa muy popular. En 2019, el 53% de los 1000 juegos de móvil más rentables del mundo habían sido desarrollados con el programa Unity3D y además, los juegos desarrollados con esta herramienta para ordenadores, consolas y móviles representaban más de un 50% del total (Unity Technologies, s.f.).
