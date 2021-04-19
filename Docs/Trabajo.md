@@ -76,7 +76,7 @@
 ## 1. Introducción.
 Durante varios años, en la indústria de videojuegos se ha debatido el concepto Data-Oriented Design (DOD) debido al gran impacto en rendimiento que ofrece dicho paradigma. Con la presentación de la pila de tecnologías basadas en datos (DOTS) por parte de Unity Technologies, se ha puesto al paradigma de programación orientada a datos en el punto de mira. 
 
-Además, existe una vertiente dentro del sector que utiliza la inteligencia artificial (AI) para realizar o ayudar en el desarrollo de videojuegos. Se pueden observar herramientas de remasterización, herramientas de generación de escenarios y el uso de AI para generar misiones como es el caso de Skyrim.
+Además, existe una vertiente dentro del sector que utiliza la inteligencia artificial (AI) para realizar o ayudar en el desarrollo de videojuegos. Se pueden observar herramientas de remasterización, herramientas de generación de escenarios y el uso de AI para generar misiones como es el caso del juego de Skyrim.
 
 Este proyecto busca enlazar los conceptos de DOD y AI en el desarrollo de videojuegos. Por este motivo, el objetivo del trabajo es implementar un modelo de inteligencia artificial concreto mediante el uso de este paradigma de programación. Al finalizar el desarrollo, se espera disponer de un sistema que ayude a diseñar y entrenar el comportamiento de los NPCs de un juego.
 
@@ -87,15 +87,14 @@ Este documento se ha dividido en diferentes capítulos que se dividen en dos gra
 En esta sección se detallan los objetivos presentes en la realización de este proyecto. Estos objetivos han estado divididos según su tipología para con el proyecto. A continuación se detallan los objetivos principales seguidos por los objetivos secundarios.
 
 ### 2.1. Objetivos principales.
-El proyecto tiene como finalidad la investigación, documentación y implementación de una red neuronal evolutiva mediante Data-Oriented Design. Se pueden
-observar como objetivos principales los siguientes objetivos:
+El proyecto tiene como finalidad la investigación, documentación y implementación de una red neuronal evolutiva mediante Data-Oriented Design. Se pueden observar como objetivos principales los siguientes:
 
 1. Implementar modelos de redes neuronales evolutivas mediante programación orientada a datos.
 
 1. Investigar y documentar sobre la programación orientada a datos y los conceptos de inteligencia artificial utilizados.
 
 ### 2.2. Objetivo secundario.
-En la realización del primer objetivo principal, también se realiza el siguiente objetivo secundario. Objetivo que sirve para evaluar que tipo de sinergia aporta el uso del paradigma objeto del trabajo a los conceptos de inteligencia artificial propuestos.
+En la realización del primer objetivo principal, también se realiza el siguiente objetivo secundario. Este sirve para evaluar que tipo de sinergia aporta el uso del paradigma objeto del trabajo a los conceptos de inteligencia artificial propuestos.
 
 1. Identificar las ventajas e inconvenientes del paradigma Data-Oriented Design en la construcción de modelos de red neuronales y algoritmos evolutivos.
 
