@@ -41,11 +41,8 @@
                 4.1.2.2.1. Función de activación --- OK
                 4.1.2.2.2. Capa --- OK
             4.1.2.3. Entrenamiento y Aprendizaje --- OK
-        4.1.3. Red Neuronal Artificial Evolutiva
-            4.1.3.1. Contexto
-            4.1.3.2. Terminología
-            4.1.3.3. Entrenamiento y Aprendizaje
-            4.1.3.4. Aplicación
+            4.1.2.4. Aplicación --- OK
+                4.1.2.4.1. Red Neuronal Artificial Evolutiva --- OK
     4.2. Implementación --- OK
         4.2.1. Data-Oriented Design --- OK
             4.2.1.1. Contexto --- OK
@@ -567,7 +564,7 @@ En toda ANN existen mínimo dos capas. La capa de entrada y la capa de salida. C
 
 El número de neuronas por capas es un número definido por el que diseña el modelo. Entiendiendo las neuronas como unidades de procesamiento (Yao, 1999), según el problema a resolver puede interesar disponer de más o menos neuronas, ya que que cada neurona puede llegar a especializarse en un ámbito del problema concreto.
 
-`Yao, X. (1990) Evolving artificial neural networks`
+`Yao, X. (1999) Evolving artificial neural networks`
 
 Esta especialización en ningún caso es planteada en el diseño de la ANN. Se realiza una vez se ha entrenado la red.
 
@@ -591,6 +588,16 @@ Respecto al aprendizaje no supervisado, se refiere al aprendizaje que no conoce 
 Existen diferentes técnicas para realizar cada uno de los aprendizajes mencionados. De entre ellas, se puede destacar al aprendizaje mediante la propagación hacia atrás (Backpropagation) que introdujo Werbos (1974). Se trata de un algoritmo de aprendizaje supervisado que optimiza el proceso de reconfiguración de la red neuronal respecto a otros procesos. En vez de recorrer cada una de las opciones posibles a través de las neuras para configurar sus pesos, realiza el mínimo recorrido necesario según el peso que a tenido una neurona en el error encontrado.
 
 `Werbos, P.J. (1974) Beyond regression: new tools for prediction and analysis in the behavioural sciences, Doctoral Dissertation, Applied Mathematics, Harvard University.`
+
+##### 4.1.2.4. Aplicación.
+Existen múltiples modelos de aplicación de redes neuronales y cada aplicación dispone de sus múltiples variantes. En este documento se ha detallado principalmente la variante de perceptron multicapa. Modelo generalista y muy similar a la gran mayoria de modelos. A continuación, se detalla el modelo aplicado en la realización de este trabajo.
+
+###### 4.1.2.4. Red Neuronal Artificial Evolutiva.
+Una red neuronal artificial evolutiva (EANN) es una ANN que aprende mediante algoritmos evolutivos (Yao & Liu, 1997). 
+
+`Yao, X. Liu, Y. (1997) A New Evolutionary System for Evolving Artificial Neural Networks. IEEE Transactions on Neural Networks.`
+
+El valor de los pesos, desviación de error y incluso las conexiones de la red neuronal varian según un algoritmo evolutivo. Concretamente, en este proyecto se utiliza el GA (definido anteriormente). Se trata de un método de entrenamiento no supervisado, ya que no dispone de los valores de salida esperados y desconoce el problema a resolver. Únicamente se evalua su aptitud y evolucionan en base a esta.
 
 ### 4.2. Implementación
 La implementación que se realiza en este proyecto se basa en una série de tecnologías y patrones que caracterizan y diferencian este proyecto de otros que tratan las redes neuronales evolutivas.
@@ -1016,5 +1023,7 @@ Werbos, P.J. (1974) *Beyond regression: new tools for prediction and analysis in
 
 Whitley, D. (1994). *A genetic algorithm tutorial. Statistics and computing*.
 
-Yao, X. (1990) *Evolving artificial neural networks*.
+Yao, X. (1999) *Evolving artificial neural networks*.
+
+Yao, X. Liu, Y. (1997) *A New Evolutionary System for Evolving Artificial Neural Networks*. IEEE Transactions on Neural Networks.
 
