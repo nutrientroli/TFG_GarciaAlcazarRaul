@@ -49,7 +49,7 @@
     4.2. Implementación --- OK
         4.2.1. Data-Oriented Design --- OK
             4.2.1.1. Contexto --- OK
-                4.2.1.1.1. Arquitectura de un ordenador
+                4.2.1.1.1. Arquitectura de un ordenador --- OK
                 4.2.1.2.2. Historia --- OK
             4.2.1.2. Aplicación --- OK
                 4.2.1.2.1. Array of Structs y Struct of Arrays --- OK
@@ -71,8 +71,9 @@
 5. Diseño metodológico y cronograma
 6. Resultados del trabajo
 7. Conclusiones y reflexión
-8. Bibliografía  
+8. Bibliografía --- OK 
 ```
+
 ## 1. Introducción.
 Durante varios años, en la indústria de videojuegos se ha debatido el concepto Data-Oriented Design (DOD) debido al gran impacto en rendimiento que ofrece dicho paradigma. Con la presentación de la pila de tecnologías basadas en datos (DOTS) por parte de Unity Technologies, se ha puesto al paradigma de programación orientada a datos en el punto de mira. 
 
@@ -609,11 +610,48 @@ Aunque para este paradigma los datos tienen gran relevancia, no hay que confundi
 
 En resumen, el objetivo que busca el paradigma de programación orientada a datos es mejorar el rendimiento de los programas a través de la mejora en la gestión de datos en memoria.
 
-
 ##### 4.2.1.1. Contexto
-Para entender mejor que significan los conceptos que componen el término DOD hay que diponer de nociones del funcionamiento de un ordenador y nociones de software. A continuación se exponen aquellos aspectos de la arquitectura de un ordenador necesarios para la comprensión del concepto y posteriormente, se detalla la historia este tipo de programación.
+Para entender mejor que significan los conceptos que componen el término DOD hay que diponer de nociones del funcionamiento de un ordenador y nociones de software. A continuación se exponen aquellos aspectos de la arquitectura de un ordenador necesarios para la comprensión del concepto y posteriormente, se detalla la historia de este tipo de programación.
 
 ###### 4.2.1.1.1. Arquitectura de un ordenador
+Generalmente, la arquitectura de un ordenador actual sigue la arquitecura de Von Neumann (Von Neumann, 1945). Dicha arquitectura proporciona mediante una organización de componentes concreta, la capacidad de guardar en memoria programas para posteriormente ser ejecutados. Dicho de otro modo, puede guardar instrucciones y datos.
+
+`Neumann, V. J. (1945). The First Draft Report on the EDVAC. Philadelphia, PA: Moore School of Electrical Engineering, University of Pennsylvania.`
+
+Esta arquitectura dispone de varios componentes de los que se pueden destacar en materia de DOD la CPU y el caché, así como la memoria RAM. A continuación se muestra una figura en donde se visualizan dichos componentes y representa el problema que busca resolver el paradigma objeto del trabajo.
+
+![Cruce](./assets/VonNeumann.png)
+
+`Herraiz. (2013). Arquitectura de un ordenador. MateWiki. Recuperado de https://mat.caminos.upm.es/wiki/Arquitectura_de_un_ordenador`
+
+En la figura anterior se puede observar que existen dos buses de transmisión de datos. La amplitud de estos buses representa el ancho de banda que ofrecen. A simple vista, se puede analizar que hay una gran diferencia entre el bus de caché-CPU y el bus de memoria-caché. Esta diferencia resulta en una variacón en la velocidad de acceso a los datos por parte de la CPU.
+
+El procesador, en inglés, Central Processing Unit (CPU) es el encargado de realizar todas las operaciones que puede realizar el ordenador. Para realizar dichas operaciones requiere de datos a transformar o consultar. Es en este punto en el que realiza una petición de datos. A continuación se representa el recorrido que realizan los datos hasta llegar a la CPU según en donde esten situados.
+
+![Cruce](./assets/Cache.png)
+
+`Hougaard K. (2019). Creating a third-person zombie shooter with DOTS. Unity Blog. Recuperado de  https://blogs.unity3d.com/es/2019/11/27/creating-a-third-person-zombie-shooter-with-dots/`
+
+Esta representación anterior de la memoria no solo indica que incremento de tiempo implica el acceder a dicha memoria sinó también representa el tamaño de datos que puede guardar cada unidad de memoria. En el caché, se observa que existen diferentes niveles. A menor nivel, más cerca del CPU y más ràpido es el acceso, pero menor espacio de datos hay. En cambio, por ejemplo, la RAM, dipone de mucho espacio para guardar datos pero es más lento. A esta disposición se le llama jerarquía de memoria y es comunmente representada por una pirámide. En donde el caché (L1) esta en la cima y la memoria RAM (Random Acces Memory) en la parte inferior.
+
+Para entender el funcionamiento del caché y en como se guardan los datos durante una ejecución, a continuación se detallan dos aspectos importantes en los que se centra principalmente el paradigma de programación orientada a datos.
+
+- **Caché hit**.
+Un caché hit es el término que se utiliza cuando la CPU realiza una consulta de datos en el primer nivel de caché (L1) y esos datos son disponibles (Losonczi, 2020). Si se produce un caché hit, la instrucción es procesada inmediatamente. Se trata del mejor escenario a nivel de rendimiento.
+
+`Losonczi, T. (2020). Introduction to Data-Oriented Programming. Recuperado de https://medium.com/mirum-budapest/introduction-to-data-orientedprogramming-85b51b99572d`
+
+- **Caché miss**.
+Caché miss es el término que se utiliza cuando la CPU realiza una consulta de datos en el primer nivel de caché (L1) y esos datos no son encontrados. En este caso la búsqueda continúa por cada nivel de la jerarquía de memoria hasta que son encontrados (Losonczi, 2020). Con cada nivel que se desciende en la jerarquía de datos se aplica un incremento de tiempo en la obtención de los datos por parte de la CPU. El peor escenario es haber de buscar los datos de la memoria RAM, ya que dispone de la mayor penalización de rendimiento.
+
+`Losonczi, T. (2020). Introduction to Data-Oriented Programming. Recuperado de https://medium.com/mirum-budapest/introduction-to-data-orientedprogramming-85b51b99572d`
+
+- **Caché line**.
+Cuando se lee o se escribe datos en memoria, se realiza mediante lineas de caché. Esto significa que cuando se accede a un dato, también se esta accediendo a los datos adyacentes. Este sistema permite cargar en caché los datos adyacentes de un dato obtenido de la memoria principal. En caso de que la siguiente operación por la CPU consista en la transformación de datos adyacentes al dato originario, estos ya se encuentran en caché y por lo tanto, se produce un mejor acceso a ellos produciendo un cache hit (Meyers, 2014).
+
+`Meyers , S. (2014). Cpu Caches and Why You Care [Vídeo]. Recuperado de https://www.youtube.com/watch?v=WDIkqP4JbkE&feature=youtu.be`
+
+Estos conceptos son relevantes para los capítulos posteriores ya que son la principal herramienta en la programación orientada a datos para mejorar el rendimiento de acceso. A continuación se detalla la evolución de dicho paradigma y se contextualiza porque ahora empieza a coger relevancia.
 
 ###### 4.2.1.2.2. Historia
 El concepto de programación orientada a datos o Data-Oriented Design (en adelante DOD) fue introducido por John Sharp (1980) con la intención de mejorar la eficiencia del software en arquitecturas multiprocesador.
@@ -637,6 +675,8 @@ Se puede observar que hay un salto de casi 30 años des de que se nombró el con
 `Hennessy, J. L., & Patterson, D. A. (2011). Computer architecture: a quantitative approach. Elsevier.`
 
 En la figura anterior se observa como el rendimiento de los procesadores (medido en diferencia de tiempo entre solicitud de memoria por núcleo de procesador) ha aumentado mucho más respecto al crecimiento de rendimiento que ha experimentado la memoria (medido en latencia de acceso a RAM) y es en este escenario en el que los desarrolladores implementan maneras de minimizar el impacto en rendimiento debido al acceso de datos en memoria.
+
+Esta diferencia de rendimiento que existe entre la CPU y la memoria hace que ahora se pueda notar más la penalización que existe cuando se realiza un acceso a datos. Antiguamente, la diferencia no era tan drástica y podia pasar desapercibida dicha penalización. En videojuegos, que se requiere de un gran rendimiento, este paradigma a empezado a coger fuerza. 
 
 En este punto, hay que mencionar que existe una controversia en si la programación orientada a datos es un paradigma o no. Este hecho se debe a que de una manera u otra, los programadores ya utilizaban las herramientas o seguían la filosofía del DOD antes de que se nombrara por primera vez como paradigma de programación. Además, se trata de un paradigma que puede convivir con otros simultáneamente y puede quedar en segundo plano si no se realiza a conciencia.
 
@@ -902,6 +942,8 @@ Hebb, D.O. (1949) *The Organization ofBehavior: A Neuropsychological Theory*, Jo
 
 Hennessy, J. L., & Patterson, D. A. (2011). *Computer architecture: a quantitative approach*. Elsevier.
 
+Herraiz. (2013). *Arquitectura de un ordenador*. MateWiki. Recuperado de https://mat.caminos.upm.es/wiki/Arquitectura_de_un_ordenador
+
 Hidalgo, J. Turrado, J. (2011) *Algoritmos genéticos: Aplicación al problema de la mochila*.
 
 Holland, J. (1975). *Adaptation In Natural and Artificial Systems*. University of Michigan Press, Ann Arbor.
@@ -922,7 +964,11 @@ Liechty, D. (2015). *Object-Oriented/Data-Oriented Design of a Direct Simulation
 
 Llopis, N. (2009). *Data-Oriented Design (Or Why You Might Be Shooting Yourself in The Foot With OOP)*. Recuperado de https://gamesfromwithin.com/data-oriented-design/comment-page-1
 
+Losonczi, T. (2020). *Introduction to Data-Oriented Programming*. Recuperado de https://medium.com/mirum-budapest/introduction-to-data-orientedprogramming-85b51b99572d
+
 Martin, A. (2007). *Entity Systems are the future of MMOG development - Part 2*. Recuperado de http://t-machine.org/index.php/2007/11/11/entity-systems-are-the-future-of-mmog-development-part-2/
+
+Meyers , S. (2014). *Cpu Caches and Why You Care* [Vídeo]. Recuperado de https://www.youtube.com/watch?v=WDIkqP4JbkE&feature=youtu.be
 
 Microsoft. (2021). *Paseo por el lenguaje C#*. Recuperado de https://docs.microsoft.com/es-es/dotnet/csharp/tour-of-csharp/
 
@@ -931,6 +977,8 @@ Minsky, M. and Papert, S. (1969) *Perceptrons*, MIT Press, Cambridge, MA.
 McCulloch, W.S. and Pitts, W.H. (1943) *A logical calculus of the ideas imminent in nervous activity*, Bulletin of Mathematical Biophysics, 5, 115–133.
 
 Nacelle, A. (2009) *Redes neuronales artificiales*.
+
+Neumann, V. J. (1945). *The First Draft Report on the EDVAC*. Philadelphia, PA: Moore School of Electrical Engineering, University of Pennsylvania.
 
 Piaget, J. (1963) *The Origins of Intelligence in Children*.
 
